@@ -1,0 +1,16 @@
+/* layout */
+.wrapper {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--g-color-lightgray);
+  padding-left: 225px;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  left: 0;
+  padding-top: 50px;
+}

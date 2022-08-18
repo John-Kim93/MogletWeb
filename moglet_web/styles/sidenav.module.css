@@ -1,0 +1,49 @@
+/* sidenav */
+.bar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 225px;
+  height: 100vh;
+  transition: all 0.5s ease;
+  background-color: var(--g-color-dark-bg);
+}
+
+.bar ul {
+  list-style: none;
+  margin:0px;
+  padding:0px;
+  color: var(--g-color-lightgray-text);
+  border-top: solid 1px;
+}
+
+.bar ul li a{
+  display: flex;
+  padding: 13px 30px;
+  font-size: 14px;
+  border-bottom: solid 1px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.bar ul li a span {
+  margin-left: 4px;
+  color: white;
+}
+
+.bar ul li a:hover {
+  color: white;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 15px 10px;
+}
+.logo h2 {
+  color: white;
+  font-size: 18px;
+  margin-left: 12px;
+}

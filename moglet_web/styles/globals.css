@@ -24,3 +24,15 @@ a {
     background: black;
   }
 }
+
+
+:root {
+  --g-color-main-red: #FD3B3B;
+
+  --g-color-main-orange: #FE7913;
+
+  --g-color-lightgray: #F2F2F2;
+  --g-color-lightgray-text: #8787A3;
+  
+  --g-color-dark-bg: #1B1F3A;
+}
