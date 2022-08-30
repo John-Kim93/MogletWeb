@@ -17,7 +17,7 @@
   border-top: solid 1px;
 }
 
-.bar ul li a{
+.bar ul li{
   display: flex;
   padding: 13px 30px;
   font-size: 14px;

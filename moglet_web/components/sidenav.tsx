@@ -23,9 +23,7 @@ export default function SideNav() {
       <ul>
         <li>
           <a href="#">
-            <div className={styles.img}>
-              <RiCoupon2Line />
-            </div>
+            <RiCoupon2Line />
             <span>식권 관리</span>
           </a>
         </li>
