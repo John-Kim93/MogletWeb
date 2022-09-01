@@ -58,3 +58,13 @@
   font-size: 12px;
   margin: 4px 0 0 8px;
 }
+
+#errorMessage {
+  width: 100%;
+  text-align: end;
+  color: var(--g-color-main-red);
+  font-size: 12px;
+  font-weight: bold;
+  margin: 4px;
+  padding: 0 8px;
+}
