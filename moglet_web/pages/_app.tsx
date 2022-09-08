@@ -1,18 +1,10 @@
 import { AppProps } from 'next/app'
+import { RecoilRoot } from 'recoil';
 import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from 'recoil';
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from 'react-query'
+// import { ReactQueryDevtools } from "react-query/devtools";
 // import {
 
 // } from '../pages/api'
@@ -25,6 +17,7 @@ export default function App({ Component, pageProps} :AppProps ) {
   return (
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
+        {/* <ReactQueryDevtools initialIsOpen={true} /> */}
         <Component {...pageProps} />
       </QueryClientProvider>
     </RecoilRoot>

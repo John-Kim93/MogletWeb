@@ -1,3 +1,6 @@
+import { useSetRecoilState } from 'recoil'
+import { loginUser } from '../../recoil/auth';
+import { useRouter } from "next/router";
 import 'react-app-polyfill/ie11';
 import styles from '../../styles/home.module.css';
 import * as React from 'react';
@@ -14,6 +17,12 @@ interface Values {
 }
 
 export default function Login() {
+  // recoil
+  const setUser = useSetRecoilState(loginUser)
+  // router
+  const router = useRouter();
+
+  // form
   function validateId(value) {
     let error;
     if (!value) {
@@ -65,6 +74,12 @@ export default function Login() {
           { setSubmitting }: FormikHelpers<Values>
         ) => {
           login(values)
+          .then(res => {
+            if (res) {
+              setUser(res)
+              router.push("/service/menu")
+            }
+          })
           setSubmitting(true);
         }}
       >

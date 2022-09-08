@@ -18,6 +18,7 @@
     "react-icons": "^4.4.0",
     "react-query": "^3.39.2",
     "recoil": "^0.7.5",
+    "sweetalert2": "^11.4.29",
     "yup": "^0.32.11"
   },
   "devDependencies": {

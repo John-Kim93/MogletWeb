@@ -5,3 +5,5 @@ interface User {
   corp_name :string,
   address :string,
 }
+
+type businessShopUid = number

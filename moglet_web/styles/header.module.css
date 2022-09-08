@@ -1,6 +1,7 @@
 /* Header(top nav) */
 .navBar {
   position: fixed;
+  z-index: 10;
   height: 50px;
   left: 225px;
   top: 0;

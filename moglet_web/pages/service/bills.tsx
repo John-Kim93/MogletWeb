@@ -1,12 +1,12 @@
 import Layout from "../../components/layout";
 import Header from "../../components/header";
 
-export default function Coupon() {
+export default function Bills() {
   return (
     <Layout>
       <Header />
       <div className="serviceMainContainer">
-        test
+      Bills
       </div>
     </Layout>
   )
