@@ -3,15 +3,15 @@ import { apiGetRestaurantInfo } from '../../api/service/apiRestaurantInfo';
 import { BusinessShopTime } from '../../res/service/time';
 import { TimeTable, StringDaysAndWeeks, TimeElement } from '../../../types/time';
 
-export function getTimeInfo (uid :businessShopUid) :string | TimeTable {
-  const getTime = (uid :businessShopUid) => {
-    const res = useQuery(['get_restaurantInfo_uid'], () => apiGetRestaurantInfo(uid))
+export function getTimeInfo () :string | TimeTable {
+  const getTime = () => {
+    const res = useQuery(['get_restaurantInfo_uid'], () => apiGetRestaurantInfo())
 
     if(res.isLoading) {
       return "로딩중"
     }
 
-    if(res.data) {
+    if(res.isSuccess) {
       const result :TimeTable = {
         "BUSINESS_TIME" : new Array,
         "BREAK_TIME" : new Array,
@@ -55,7 +55,7 @@ export function getTimeInfo (uid :businessShopUid) :string | TimeTable {
       return result
     }
   }
-  return getTime(uid)
+  return getTime()
 }
 
 function calculateBinaryCodeToString(days :number, weeks :number) :StringDaysAndWeeks{

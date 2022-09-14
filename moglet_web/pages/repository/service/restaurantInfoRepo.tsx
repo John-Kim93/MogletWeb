@@ -4,16 +4,17 @@ import { RestaurantInfoRes } from '../../res/service/restaurantInfo';
 import Image from 'next/image';
 
 const IMAGE_BASE_URL = process.env.S3_URL
-export function getRestaurantInfo (uid :businessShopUid) : JSX.Element {
-  const getInfo = (uid :businessShopUid) => {
-    const res = useQuery(['get_restaurantInfo_uid'], () => apiGetRestaurantInfo(uid))
+export function getRestaurantInfo() : JSX.Element {
+  const getInfo = () => {
+    const res = useQuery(['get_restaurantInfo_uid'], () => apiGetRestaurantInfo())
+    console.log('res', res)
 
     if(res.isLoading) {
       return (
           <h2>Loading...</h2>
       )
     }
-    if(res.data) {
+    if(res.isSuccess) {
       const restaurantInfo: RestaurantInfoRes = res.data.data.item;
       const shopImage = `${IMAGE_BASE_URL}${restaurantInfo.shop_filename}`
       return (
@@ -41,7 +42,7 @@ export function getRestaurantInfo (uid :businessShopUid) : JSX.Element {
   }
   return (
     <div>
-      {getInfo(uid)}
+      {getInfo()}
     </div>
   )
 

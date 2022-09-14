@@ -2,17 +2,17 @@ import { useQuery } from 'react-query';
 import { apiGetMenu } from '../../api/service/apiMenu';
 import { MenuRes } from '../../res/service/menu';
 
-export function getMenuInfo (uid :businessShopUid) : JSX.Element {
-  const getMenu = (uid :businessShopUid) => {
-    const res = useQuery(['get_menu_uid'], () => apiGetMenu(uid))
-    
+export function getMenuInfo() :JSX.Element {
+  const getMenu = () => {
+    const res = useQuery(['get_menu_uid'], () => apiGetMenu())
+    console.log('menuRepo', res)    
     if(res.isLoading) {
       return (
           <h2>Loading...</h2>
       )
     }
 
-    if(res.data) {
+    if(res.isSuccess) {
       const menus: MenuRes[] = res.data.data.item;
 
       return (
@@ -32,7 +32,7 @@ export function getMenuInfo (uid :businessShopUid) : JSX.Element {
   }
   return (
     <div>
-      {getMenu(uid)}
+      {getMenu()}
     </div>
   )
 } 

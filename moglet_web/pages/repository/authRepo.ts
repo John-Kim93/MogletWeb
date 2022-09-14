@@ -14,6 +14,7 @@ export async function login(info :LoginReq) {
         name :data.name,
         corp_name :data.corp_name,
         address :data.address,
+        access_token :data.access_token
       }
     return loginUser
     } else {

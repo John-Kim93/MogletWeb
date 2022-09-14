@@ -8,5 +8,6 @@ export const loginUser = atom<User>({
     name :"anonymous",
     corp_name :"anonymous",
     address :"anonymous",
+    access_token :" ",
   }
 })

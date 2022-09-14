@@ -9,4 +9,5 @@ export interface LoginRes {
   name :string,
   corp_name :string,
   address :string,
+  access_token :string
 }

@@ -7,7 +7,7 @@ import { getRestaurantInfo } from "../repository/service/restaurantInfoRepo";
 export default function Restaurants() {
   const curUser = useRecoilValue(loginUser)
   console.log('로그인 잘 됨', curUser)
-  const res = getRestaurantInfo(curUser.uid)
+  const res = getRestaurantInfo()
   return (
     <Layout>
       <Header />

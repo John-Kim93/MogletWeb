@@ -77,6 +77,7 @@ export default function Login() {
           .then(res => {
             if (res) {
               setUser(res)
+              sessionStorage.access_token = res.access_token
               router.push("/service/menu")
             }
           })

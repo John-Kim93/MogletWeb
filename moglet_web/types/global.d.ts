@@ -4,6 +4,5 @@ interface User {
   name :string,
   corp_name :string,
   address :string,
+  access_token :string
 }
-
-type businessShopUid = number

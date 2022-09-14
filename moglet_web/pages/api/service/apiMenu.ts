@@ -1,7 +1,11 @@
 import axios from 'axios';
+import { setToken } from '../apiUtils';
 
-export const apiGetMenu = ( uid :businessShopUid ) =>
+export const apiGetMenu = () =>
 	axios({
 		method: 'get',
-		url: `/api/public/businessMenu?business_shop_uid=${uid}`,
+		url: '/api/private/businessMenu',
+		headers: {
+			...setToken()
+		}
 	})
