@@ -5,9 +5,6 @@ import {
   QueryClientProvider,
 } from 'react-query'
 // import { ReactQueryDevtools } from "react-query/devtools";
-// import {
-
-// } from '../pages/api'
 import '../styles/globals.css'
 
  // Create a react query client

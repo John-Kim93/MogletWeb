@@ -18,3 +18,18 @@ export interface RestaurantInfoRes {
   count_like :number,
   count_review :number,
 }
+
+export interface RestaurantInfo {
+  shopImage :string,
+  name :string,
+  content :string,
+  park_info :number,
+  address_place_name :string,
+  address_road_name :string,
+  price_avg : string,
+  website :string | null,
+  region :string,
+  naver_info :string,
+  kakao_info :string,
+  count_data :string,
+}

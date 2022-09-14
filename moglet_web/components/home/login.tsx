@@ -1,5 +1,3 @@
-import { useSetRecoilState } from 'recoil'
-import { loginUser } from '../../recoil/auth';
 import { useRouter } from "next/router";
 import 'react-app-polyfill/ie11';
 import styles from '../../styles/home.module.css';
@@ -17,8 +15,6 @@ interface Values {
 }
 
 export default function Login() {
-  // recoil
-  const setUser = useSetRecoilState(loginUser)
   // router
   const router = useRouter();
 
@@ -76,7 +72,6 @@ export default function Login() {
           login(values)
           .then(res => {
             if (res) {
-              setUser(res)
               sessionStorage.access_token = res.access_token
               router.push("/service/menu")
             }
