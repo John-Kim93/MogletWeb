@@ -1,4 +1,4 @@
-export interface BusinessShopTimeList {
+export interface BusinessShopTime {
   uid :number,
   created_time :string,
   updated_time :string,
