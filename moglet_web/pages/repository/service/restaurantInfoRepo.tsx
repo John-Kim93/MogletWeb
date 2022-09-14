@@ -1,11 +1,11 @@
 import { useQuery } from 'react-query';
 import { apiGetRestaurantInfo } from '../../api/service/apiRestaurantInfo';
-import { RestaurantInfoRes, RestaurantInfo } from '../../res/service/restaurantInfo';
+import { RestaurantInfoRes, RestaurantInfo } from '../../res/service/restaurantInfoRes';
 
 const IMAGE_BASE_URL = process.env.S3_URL
 export function getRestaurantInfo() : string | RestaurantInfo {
   const getInfo = () => {
-    const res = useQuery(['get_restaurantInfo_uid'], () => apiGetRestaurantInfo())
+    const res = useQuery(['get_restaurantInfo'], () => apiGetRestaurantInfo())
 
     if(res.isLoading) {
       return "로딩중"
