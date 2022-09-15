@@ -1,0 +1,18 @@
+#errorMessage {
+  width: 100%;
+  text-align: end;
+  color: var(--g-color-main-red);
+  font-size: 12px;
+  font-weight: bold;
+  margin: 4px;
+  padding: 0 8px;
+}
+.modal {
+  display: flex;
+  position: absolute;
+  inset: 5rem 15rem;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
