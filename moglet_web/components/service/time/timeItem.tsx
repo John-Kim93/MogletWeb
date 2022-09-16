@@ -1,5 +1,5 @@
 import { TimeTable } from "../../../types/time"
-import { getTimeInfo } from "../../../pages/repository/service/timeRepo"
+import { getTimeInfo } from "../../../repository/service/timeRepo"
 
 export default function TimeItem() {
   const restaurantInfo :string | TimeTable = getTimeInfo()

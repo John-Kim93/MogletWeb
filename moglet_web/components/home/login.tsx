@@ -7,7 +7,7 @@ import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import imgTitle from '../../public/images/moglet_title.png';
 import imgLogo from '../../public/images/moglet_logo.png';
-import { login } from '../../pages/repository/authRepo';
+import { login } from '../../repository/authRepo';
 
 interface Values {
   id: string;

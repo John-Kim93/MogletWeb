@@ -1,7 +1,6 @@
-import { Formik, Form, Field, FormikHelpers } from "formik";
+import { Formik, Form, Field } from "formik";
 import styles from '../../../styles/service/common.module.css';
 import * as yup from "yup";
-import { MenuCreateReq } from "../../../pages/req/service/menuReq";
 
 const ValidationSchema = yup.object().shape({
   name :yup
@@ -28,7 +27,7 @@ export function CreateMenuForm({ onSubmit, onCancel }) :JSX.Element {
         name : '',
         content : '',
         price : '',
-        is_main : 0,
+        is_main : false,
       }}
       validationSchema={ValidationSchema}
       onSubmit={(

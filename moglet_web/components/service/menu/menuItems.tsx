@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { getMenuInfo } from "../../../pages/repository/service/menuRepo"
+import { getMenuInfo } from "../../../repository/service/menuRepo"
 import MenuItem from "./menuItem"
 
 export default function MenuItems() :JSX.Element {

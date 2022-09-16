@@ -1,4 +1,4 @@
-import { getRestaurantInfo } from '../../../pages/repository/service/restaurantInfoRepo';
+import { getRestaurantInfo } from '../../../repository/service/restaurantInfoRepo';
 import Image from 'next/image';
 
 export default function RestaurantInfoItem() {
