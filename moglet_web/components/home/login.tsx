@@ -76,7 +76,7 @@ export default function Login() {
               router.push("/service/menu")
             }
           })
-          setSubmitting(true);
+          setSubmitting(true)
         }}
       >
         { ({errors,touched}) => (

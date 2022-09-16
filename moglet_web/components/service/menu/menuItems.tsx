@@ -1,13 +1,8 @@
+import Link from "next/link"
 import { getMenuInfo } from "../../../pages/repository/service/menuRepo"
 import MenuItem from "./menuItem"
-import { useState } from "react"
-import { postMenu } from "../../../pages/repository/service/menuRepo"
-import { Modal } from "../../modal"
-import { CreateMenuForm } from "./createMenuForm"
 
 export default function MenuItems() :JSX.Element {
-  const [showCreateMenuPage, setShowCreateMenuPage] = useState(false)
-
   const menus = getMenuInfo()
 
   if (typeof menus == "string") {
@@ -27,23 +22,9 @@ export default function MenuItems() :JSX.Element {
   } else {
     return (
       <div>
-        <button onClick={() => setShowCreateMenuPage(!showCreateMenuPage)}>메뉴 추가</button>
-        {showCreateMenuPage && (
-          <Modal
-          onClose={() => setShowCreateMenuPage(!showCreateMenuPage)}
-          isOpen={showCreateMenuPage}
-        >
-          <CreateMenuForm
-            onSubmit={(val) => {
-              postMenu(val)
-            }}
-            onCancel={() => {
-              console.log('취소됬습니당')
-            }}
-            />
-        </Modal>
-        )}
-        
+        <Link href="/service/create/menuCreate">
+          <button>메뉴 추가</button>
+        </Link>
         {menus.map(menu => 
           <MenuItem key={menu.uid} menu={menu}/>
         )}

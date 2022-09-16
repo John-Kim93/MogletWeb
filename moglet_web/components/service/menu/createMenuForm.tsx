@@ -1,9 +1,9 @@
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, FormikHelpers } from "formik";
 import styles from '../../../styles/service/common.module.css';
-
 import * as yup from "yup";
+import { MenuCreateReq } from "../../../pages/req/service/menuReq";
 
-const ValidationSchema = yup.object({
+const ValidationSchema = yup.object().shape({
   name :yup
     .string()
     .typeError('잘못된 형식의 데이터입니다.')
@@ -25,13 +25,19 @@ export function CreateMenuForm({ onSubmit, onCancel }) :JSX.Element {
   return (
     <Formik
       initialValues={{
-        name : "",
-        content : "",
-        price : "",
-        is_main : false,
+        name : '',
+        content : '',
+        price : '',
+        is_main : 0,
       }}
       validationSchema={ValidationSchema}
-      onSubmit={onSubmit}
+      onSubmit={(
+        values,
+        { setSubmitting }
+      ) => {
+        onSubmit(values)
+        setSubmitting(true)
+      }}
     >
       {({ errors, touched }) => {
         return (
@@ -50,7 +56,7 @@ export function CreateMenuForm({ onSubmit, onCancel }) :JSX.Element {
             </div>
             <div>
               대표 메뉴 설정 
-              <Field type="checkbox" name="is_main" />
+              <Field type="checkbox" name="checkbox" />
             </div>
             <div
               className="swal2-actions"

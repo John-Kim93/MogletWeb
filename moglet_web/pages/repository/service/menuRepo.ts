@@ -24,21 +24,15 @@ export function getMenuInfo() :string | MenuRes[] {
 }
 
 export function postMenu(values) {
-  const queryClient = useQueryClient()
   const req :MenuCreateReq = {
     ...values,
     is_main : values.is_main ? 1 : 0
   }
-  useMutation({
-    mutationFn: () => apiPostMenu(req),
-    onSuccess: () => {
-      console.log('앙 성공띠')
-      queryClient.invalidateQueries('persons');
-    },
-    onError: (error) => {
-      console.log('onError', error);
-    },
-    onSettled: () => {
-    }
+  console.log('bbbb')
+  const createMenu = useMutation({
+    mutationFn: (req :MenuCreateReq) => apiPostMenu(req)
   })
+  console.log('cccc')
+  const res = createMenu.mutate(req)
+  console.log('res',res)
 }
