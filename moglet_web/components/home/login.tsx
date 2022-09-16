@@ -79,7 +79,7 @@ export default function Login() {
           setSubmitting(true)
         }}
       >
-        { ({errors,touched}) => (
+        {({ errors, touched }) => (
           <Form className={styles.formContainer}>
             <label htmlFor="id"></label>
             <Field

@@ -1,6 +1,7 @@
 import { Formik, Form, Field } from "formik";
 import styles from '../../../styles/service/common.module.css';
 import * as yup from "yup";
+import { MenuCreateVal } from "../../../req/service/menuReq";
 
 const ValidationSchema = yup.object().shape({
   name :yup
@@ -20,14 +21,15 @@ const ValidationSchema = yup.object().shape({
   is_main :yup.boolean()
 });
 
-export function CreateMenuForm({ onSubmit, onCancel }) :JSX.Element {
+export function CreateMenuForm({ initialValues, onSubmit, onCancel } : {
+  initialValues :MenuCreateVal
+  onSubmit :any
+  onCancel :any
+}) :JSX.Element {
   return (
     <Formik
-      initialValues={{
-        name : '',
-        content : '',
-        price : '',
-        is_main : false,
+      initialValues = {{
+        ...initialValues
       }}
       validationSchema={ValidationSchema}
       onSubmit={(
@@ -55,7 +57,7 @@ export function CreateMenuForm({ onSubmit, onCancel }) :JSX.Element {
             </div>
             <div>
               대표 메뉴 설정 
-              <Field type="checkbox" name="checkbox" />
+              <Field type="checkbox" name="is_main" />
             </div>
             <div
               className="swal2-actions"
