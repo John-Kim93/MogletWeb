@@ -43,3 +43,19 @@ a {
   padding: 20px;
   border-radius: 5px;
 }
+table {
+  border: 2px solid #555;
+  border-collapse: collapse;
+}
+table > thead > tr {
+  border-bottom: 2px solid #555;
+  background: #5551;
+}
+th, td {
+  border: 1.5px solid #bbb;
+  padding: 5px 8px;
+  font-size: 14px;
+}
+table .textAlignCenter {
+  text-align: center;
+}
