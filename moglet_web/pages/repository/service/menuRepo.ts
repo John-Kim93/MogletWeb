@@ -22,17 +22,15 @@ export function getMenuInfo() :string | MenuRes[] {
   }
   return getMenu()
 }
-
 export function postMenu(values) {
+  const createMenu = useMutation({
+    mutationFn: (req :MenuCreateReq) => apiPostMenu(req)
+  })
   const req :MenuCreateReq = {
     ...values,
     is_main : values.is_main ? 1 : 0
   }
-  console.log('bbbb')
-  const createMenu = useMutation({
-    mutationFn: (req :MenuCreateReq) => apiPostMenu(req)
-  })
-  console.log('cccc')
+
   const res = createMenu.mutate(req)
   console.log('res',res)
 }
