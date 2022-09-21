@@ -1,5 +1,6 @@
 import { Formik, Form, Field } from "formik";
 import styles from '../../../styles/service/common.module.css';
+import style from '../../../styles/service/Menu.module.css'
 import * as yup from "yup";
 import { MenuCreateVal } from "../../../req/service/menuReq";
 
@@ -44,15 +45,18 @@ export function CreateMenuForm({ initialValues, onSubmit, onCancel } : {
         return (
           <Form>
             <div>
-              메뉴명 : <Field name="name" />
+              메뉴명
+              <Field name="name" className={style.textInput} />
               {errors.name && touched.name ? (<div id={styles.errorMessage}>{errors.name}</div>) : null}
             </div>
             <div>
-              메뉴 설명 : <Field as="textarea" name="content" />
+              메뉴 설명
+              <Field as="textarea" name="content" className={style.textArea}/>
               {errors.content && touched.content ? (<div id={styles.errorMessage}>{errors.content}</div>) : null}
             </div>
             <div>
-              가격 : <Field name="price" />
+              가격
+              <Field name="price" className={style.textInput} />
               {errors.price && touched.price ? (<div id={styles.errorMessage}>{errors.price}</div>) : null}
             </div>
             <div>

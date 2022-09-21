@@ -44,6 +44,8 @@ a {
   border-radius: 5px;
 }
 table {
+  width: 100%;
+  table-layout: fixed;
   border: 2px solid #555;
   border-collapse: collapse;
 }
@@ -57,5 +59,6 @@ th, td {
   font-size: 14px;
 }
 table .textAlignCenter {
+  word-wrap: break-word;
   text-align: center;
 }
