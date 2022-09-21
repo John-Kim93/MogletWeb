@@ -1,9 +1,9 @@
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { getRestaurantInfo } from '../../../repository/service/restaurantInfoRepo';
+import Image from "next/image"
+import { useRouter } from "next/router"
+import { getRestaurantInfo } from "../../../repository/service/restaurantInfoRepo"
 import style from "../../../styles/service/RestaurantInfo.module.css"
 
-export default function RestaurantInfoItem() {
+export default function UpdateRestaurantInfoForm() {
   const router = useRouter()
   const restaurantInfo = getRestaurantInfo()
   if (typeof restaurantInfo == "string") {
@@ -30,6 +30,7 @@ export default function RestaurantInfoItem() {
             height={234}
             unoptimized
           ></Image>
+          <button>이미지 변경</button>
         </div>
         <h4>가게 이름 : {restaurantInfo.name}</h4>
         <h4>지번 주소 :{restaurantInfo.address_place_name}</h4>
@@ -46,7 +47,6 @@ export default function RestaurantInfoItem() {
         <h4>카카오 : {restaurantInfo.kakao_info}</h4>
         <h4>누적 조회/좋아요/리뷰 수 : {restaurantInfo.count_data}</h4>
         <button
-          onClick={() => router.push('/service/update/restaurantInfoUpdate')}
         >
           정보 수정
         </button>

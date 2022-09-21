@@ -26,8 +26,7 @@ export default function MenuCreate() {
           }}
           onSubmit={(values) => {
             createMenu.mutate(values, {
-              onSuccess: () => { // 요청이 성공한 경우
-                // 알람 띄우기
+              onSuccess: () => {
                 Swal.fire({
                   position: 'top-end',
                   icon: 'success',
@@ -37,7 +36,7 @@ export default function MenuCreate() {
                 })
                 queryClient.invalidateQueries('get_menu')
               },
-              onError: (error) => { // 요청에 에러가 발생된 경우
+              onError: (error) => {
                 console.log('onError' + error);
               },
               onSettled: () => { // 요청이 성공하든, 에러가 발생되든 실행하고 싶은 경우

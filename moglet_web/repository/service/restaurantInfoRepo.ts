@@ -25,7 +25,7 @@ export function getRestaurantInfo() : string | RestaurantInfo {
         address_road_name :restaurantInfoRes.address_road_name,
         price_avg :`${restaurantInfoRes.price_avg_start} ~ ${restaurantInfoRes.price_avg_end}`,
         website :restaurantInfoRes.website,
-        region :restaurantInfoRes.region,
+        region :restaurantInfoRes.region == 'kr' ? '한국' : '대만',
         naver_info :`${restaurantInfoRes.naver_map_rating} / ${restaurantInfoRes.naver_map_count_review}`,
         kakao_info :`${restaurantInfoRes.kakao_map_rating} / ${restaurantInfoRes.kakao_map_count_review}`,
         count_data :`${restaurantInfoRes.count_view} / ${restaurantInfoRes.count_like} / ${restaurantInfoRes.count_review}`,

@@ -1,7 +1,6 @@
 import Link from "next/link"
 import { getMenuInfo } from "../../../repository/service/menuRepo"
 import MenuItem from "./menuItem"
-import style from "../../../styles/service/Menu.module.css"
 
 export default function MenuItems() :JSX.Element {
   const menus = getMenuInfo()
@@ -26,7 +25,8 @@ export default function MenuItems() :JSX.Element {
         <h4>등록된 메뉴 수 : {menus.length}개</h4>
         
         <table>
-          <caption>등록된 메뉴 정보
+          <caption>
+            등록된 메뉴 정보
             <Link href="/service/create/menuCreate">
               <button>메뉴 추가</button>
             </Link>
