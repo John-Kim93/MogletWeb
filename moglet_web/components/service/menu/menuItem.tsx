@@ -1,30 +1,34 @@
 import { useMutation, useQueryClient } from "react-query"
-import { apiDeleteMenu } from "../../../api/service/apiMenu"
+import { apiDeleteMenu, apiUpdateMenu } from "../../../api/service/apiMenu"
 import Swal from "sweetalert2"
 import { useState } from "react"
-import { MenuUpdateVal } from "../../../req/service/menuReq"
-import { updateMenu as update } from "../../../repository/service/menuRepo"
+import { getMenuRes, updateMenu as update } from "../../../repository/service/menuRepo"
+import styles from "../../../styles/service/common.module.css"
 import style from "../../../styles/service/Menu.module.css"
+import { MenuVal } from "../../../res/service/menuRes"
+import { MenuUpdateReq } from "../../../req/service/menuReq"
 
-export default function MenuItem({ menu }) {
+export default function MenuItem({ menuItem }) {
+  const menu :MenuVal = getMenuRes(menuItem)
   const [editMenu, setEditMenu] = useState(false)
-  const [name, setName] = useState(menu.name)
-  const [content, setContent] = useState(menu.content)
-  const [price, setPrice] = useState(menu.price)
-  const [isMain, setIsMain] = useState(menu.is_main)
 
   const queryClient = useQueryClient()
   
-  const updateMenu = useMutation((values :MenuUpdateVal) => update(values))
+  const updateMenu = useMutation((req :MenuUpdateReq) => apiUpdateMenu(req))
   const deleteMenu = useMutation((uid :number) => apiDeleteMenu(uid))
   if (!editMenu) {
     return (
       <tr key={menu.uid}>
-        <td>{name}</td>
-        <td>{content}</td>
-        <td className="textAlignCenter">₩{price}</td>
-        <td className="textAlignCenter">{isMain ? 'O' : ''}</td>
+        <td>{menu.name}</td>
+        <td>{menu.content}</td>
+        <td className="textAlignCenter">₩{menu.price}</td>
+        <td className="textAlignCenter">{menu.isMain ? 'O' : ''}</td>
         <td>
+          <button
+            onClick={() => setEditMenu(!editMenu)}
+          >
+            메뉴 수정
+          </button>
           <button
             onClick={() => deleteMenu.mutate(menu.uid, {
               onSuccess: () => {
@@ -46,42 +50,30 @@ export default function MenuItem({ menu }) {
           >
             메뉴 삭제
           </button>
-          <button
-            onClick={() => setEditMenu(!editMenu)}
-          >
-            메뉴 수정
-          </button>
         </td>
       </tr>
     )
   } else if (editMenu) {
-
     return (
       <tr key={menu.uid}>
           <td>
             <div className={style.inputWrap}>
-              <input type="text" defaultValue={name} className={style.textInput} onChange={(e) => setName(e.target.value)}></input>
+              <input type="text" defaultValue={menu.name} className={styles.textInput} onChange={(e) => menu.name = e.target.value}></input>
             </div>
           </td>
           <td>
-            <input type="text" defaultValue={content} className={style.textInput} onChange={(e) => setContent(e.target.value)}></input>
+            <input type="text" defaultValue={menu.content} className={styles.textInput} onChange={(e) => menu.content = e.target.value}></input>
           </td>
           <td>
-            <input type="text" defaultValue={price} className={style.textInput} onChange={(e) => setPrice(e.target.value)}></input>
+            <input type="text" defaultValue={menu.price} className={styles.textInput} onChange={(e) => menu.price = parseInt(e.target.value)}></input>
           </td>
           <td className="textAlignCenter">
-            <input type='checkbox' value={isMain} defaultChecked={isMain} onChange={(e) => setIsMain(e.target.checked)}></input>
+            <input type='checkbox' defaultChecked={menu.isMain} onChange={(e) => menu.isMain = e.target.checked}></input>
           </td>
           <td>
             <button
               onClick={() => {
-                updateMenu.mutate({
-                    businessShopMenuUid : menu.uid,
-                    name : name,
-                    content : content,
-                    price : price,
-                    isMain : isMain
-                  }, {
+                updateMenu.mutate(update(menu), {
                     onSuccess: () => {
                       Swal.fire({
                         position: 'top-end',
@@ -104,15 +96,7 @@ export default function MenuItem({ menu }) {
             >
               완료
             </button>
-            <button
-              onClick={() => {
-                setName(menu.name)
-                setContent(menu.content)
-                setPrice(menu.price)
-                setIsMain(menu.is_main)
-                setEditMenu(!editMenu)
-              }}
-            >
+            <button onClick={() => {setEditMenu(!editMenu)}}>
               취소
             </button>
           </td>

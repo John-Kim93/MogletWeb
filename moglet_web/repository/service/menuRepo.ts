@@ -1,44 +1,37 @@
-import { useQuery } from 'react-query';
-import { apiGetMenu, apiUpdateMenu } from '../../api/service/apiMenu';
-import { MenuRes } from '../../res/service/menuRes';
-import { MenuCreateReq, MenuCreateVal } from '../../req/service/menuReq';
+import { apiUpdateMenu } from '../../api/service/apiMenu';
+import { MenuVal, MenuRes } from '../../res/service/menuRes';
+import { MenuCreateReq, MenuCreateVal, MenuUpdateReq } from '../../req/service/menuReq';
 import { apiPostMenu } from '../../api/service/apiMenu';
  
-export function getMenuInfo() :string | MenuRes[] {
-  const getMenu = () => {
-    const res = useQuery(['get_menu'], () => apiGetMenu())
-    
-    if (res.isLoading) {
-      return "로딩중"
-    }
-    if (res.isError) {
-      return "에러"
-    }
-
-    if (res.isSuccess) {
-      const menus: MenuRes[] = res.data.data.item;
-      return menus
-    }
+export function getMenuRes(menuRes :MenuRes) :MenuVal {
+  const menus = {
+    ...menuRes,
+    deletedTime : menuRes.deleted_time,
+    createdTime : menuRes.created_time,
+    updatedTime : menuRes.updated_time,
+    businessShopUid : menuRes.business_shop_uid,
+    isMain : menuRes.is_main ? true : false
   }
-  return getMenu()
+  return menus
 }
 
 export function createMenu(values :MenuCreateVal) {
   const req :MenuCreateReq = {
     ...values,
-    price : parseInt(values.price),
+    price : values.price,
     is_main : values.isMain ? 1 : 0
   }
   const res = apiPostMenu(req)
   return res
 }
 
-export function updateMenu(values :MenuCreateVal) {
-  const req :MenuCreateReq = {
-    ...values,
-    price : parseInt(values.price),
+export function updateMenu(values :MenuVal) {
+  const req :MenuUpdateReq = {
+    business_shop_menu_uid : values.uid,
+    name : values.name,
+    content : values.content,
+    price : values.price,
     is_main : values.isMain ? 1 : 0
   }
-  const res = apiUpdateMenu(req)
-  return res
+  return req
 }

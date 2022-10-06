@@ -9,3 +9,14 @@ export interface MenuRes {
   price: number,
   is_main: number,
 }
+
+export interface MenuVal extends MenuRes {
+  deletedTime: string | null,
+  createdTime: string,
+  updatedTime: string,
+  businessShopUid: number,
+  name: string,
+  content: string,
+  price: number,
+  isMain: boolean,
+}

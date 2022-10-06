@@ -1,7 +1,7 @@
 export interface MenuCreateVal {
   name :string,
   content :string,
-  price :string,
+  price :number,
   isMain :boolean
 }
 
