@@ -2,12 +2,14 @@ import { Formik, Form, Field } from "formik";
 import { useState } from "react"
 import Image from "next/image"
 import * as yup from "yup";
-import "yup-phone";
+// import "yup-phone";
 import { RestaurantInfoForUpdate } from "../../../res/service/restaurantInfoRes";
 import styles from '../../../styles/service/common.module.css';
 import style from "../../../styles/service/RestaurantInfo.module.css"
 import { getImageUrl } from "../../../repository/utilRepo";
-import { getSubCategories } from "../../../repository/service/restaurantInfoRepo";
+import { convertUpdateReq } from "../../../repository/service/restaurantInfoRepo";
+import { RestaurantInfoUpdateReq } from "../../../req/service/restaurantInfoReq";
+// import { getSubCategories } from "../../../repository/service/restaurantInfoRepo";
 
 const ValidationSchema = yup.object().shape({
   name :yup
@@ -37,12 +39,12 @@ const ValidationSchema = yup.object().shape({
     .string()
     .typeError('잘못된 형식의 데이터입니다.'),
   parkInfo :yup
-    .number()
+    .boolean()
     .typeError('잘못된 형식의 데이터입니다.'),
-  foodSubCategories :yup
-    .array()
-    .typeError('잘못된 형식의 데이터입니다.')
-    .required("필수 입력값입니다."),
+  // foodSubCategories :yup
+  //   .array()
+  //   .typeError('잘못된 형식의 데이터입니다.')
+  //   .required("필수 입력값입니다."),
   shopFilename :yup
     .string()
     .typeError('잘못된 형식의 데이터입니다.')
@@ -68,12 +70,12 @@ export default function UpdateRestaurantInfoForm({ initialValues, onSubmit, onCa
         values :RestaurantInfoForUpdate,
         { setSubmitting }
       ) => {
-        console.log('여기')
-        onSubmit(values)
+        const req :RestaurantInfoUpdateReq = convertUpdateReq(values)
+        onSubmit(req)
         setSubmitting(true)
       }}
     >
-      {({ errors, touched, setFieldValue }) => {
+      {({ errors, touched, isSubmitting, setFieldValue }) => {
         return (
           <Form>
             <div className="gridContainer">
@@ -100,35 +102,44 @@ export default function UpdateRestaurantInfoForm({ initialValues, onSubmit, onCa
                     })}}></input>
                 </div>
               </div>
-              <p>
+              <div>
                 가게 이름
                 <Field name="name" className={styles.textInput} />
                 {errors.name && touched.name ? (<div id={styles.errorMessage}>{errors.name}</div>) : null}
-              </p>
-              <p>
+              </div>
+              <div>
                 전화번호
                 <Field name="phone" className={styles.textInput} />
                 {errors.phone && touched.phone ? (<div id={styles.errorMessage}>{errors.phone}</div>) : null}
-              </p>
-              <p>
+              </div>
+              <div>
                 가격대
                 <Field name="priceAvgStart" className={styles.textInput} />
                 {errors.priceAvgStart && touched.priceAvgStart ? (<div id={styles.errorMessage}>{errors.priceAvgStart}</div>) : null}
                 ~
                 <Field name="priceAvgEnd" className={styles.textInput} />
                 {errors.priceAvgEnd && touched.priceAvgEnd ? (<div id={styles.errorMessage}>{errors.priceAvgEnd}</div>) : null}
-
-              </p>
-              <p>
+              </div>
+              <div>
                 홈페이지 주소
                 <Field name="website" className={styles.textInput} />
                 {errors.website && touched.website ? (<div id={styles.errorMessage}>{errors.website}</div>) : null}
-              </p>
-              <p>
+              </div>
+              <div>
                 <span>주차 가능 여부</span>
-                <Field type="checkBox" name="parkInfo" />
+                <Field name="parkInfo">
+                  {({ field }) => {
+                    return (  
+                      <input
+                        type="checkbox"
+                        checked={field.value}
+                        onChange={(e) => setFieldValue("parkInfo", e.target.checked)}
+                      />
+                    )
+                  }}
+                </Field>
                 {errors.parkInfo && touched.parkInfo ? (<div id={styles.errorMessage}>{errors.parkInfo}</div>) : null}
-              </p>
+              </div>
               <div
                 className="swal2-actions"
                 style={{ display: "flex", fontSize: "0.9em" }}
@@ -136,6 +147,7 @@ export default function UpdateRestaurantInfoForm({ initialValues, onSubmit, onCa
                 <button
                   type="submit"
                   className="swal2-confirm swal2-styled"
+                  disabled={isSubmitting}
                 >
                   OK
                 </button>
@@ -143,6 +155,7 @@ export default function UpdateRestaurantInfoForm({ initialValues, onSubmit, onCa
                   type="button"
                   onClick={onCancel}
                   className="swal2-cancel swal2-styled"
+                  disabled={isSubmitting}
                 >
                   Cancel
                 </button>

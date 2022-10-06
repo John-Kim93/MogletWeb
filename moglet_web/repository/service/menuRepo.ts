@@ -3,7 +3,7 @@ import { MenuVal, MenuRes } from '../../res/service/menuRes';
 import { MenuCreateReq, MenuCreateVal, MenuUpdateReq } from '../../req/service/menuReq';
 import { apiPostMenu } from '../../api/service/apiMenu';
  
-export function getMenuRes(menuRes :MenuRes) :MenuVal {
+export function convertMenuRes(menuRes :MenuRes) :MenuVal {
   const menus = {
     ...menuRes,
     deletedTime : menuRes.deleted_time,

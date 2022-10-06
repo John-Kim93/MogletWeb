@@ -2,14 +2,14 @@ import { useMutation, useQueryClient } from "react-query"
 import { apiDeleteMenu, apiUpdateMenu } from "../../../api/service/apiMenu"
 import Swal from "sweetalert2"
 import { useState } from "react"
-import { getMenuRes, updateMenu as update } from "../../../repository/service/menuRepo"
+import { convertMenuRes, updateMenu as update } from "../../../repository/service/menuRepo"
 import styles from "../../../styles/service/common.module.css"
 import style from "../../../styles/service/Menu.module.css"
 import { MenuVal } from "../../../res/service/menuRes"
 import { MenuUpdateReq } from "../../../req/service/menuReq"
 
 export default function MenuItem({ menuItem }) {
-  const menu :MenuVal = getMenuRes(menuItem)
+  const menu :MenuVal = convertMenuRes(menuItem)
   const [editMenu, setEditMenu] = useState(false)
 
   const queryClient = useQueryClient()

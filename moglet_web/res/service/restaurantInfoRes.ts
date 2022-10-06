@@ -27,12 +27,12 @@ interface RestaurantInfo {
   content :string,
   phone :string,
   website :string | null,
-  parkInfo :number,
+  parkInfo :boolean,
   foodMainCategory :number,
   foodSubCategories :number[],
 }
 
-export interface RestaurantInfoForGet extends RestaurantInfo {
+export interface RestaurantInfoVal extends RestaurantInfo {
   addressPlaceName :string,
   addressRoadName :string,
   priceAvg : string,

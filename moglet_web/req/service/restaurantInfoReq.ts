@@ -5,8 +5,8 @@ export interface RestaurantInfoUpdateVal {
   priceAvgStart :number,
   priceAvgEnd :number,
   website :string | null,
-  parkInfo :number,
-  foodSubCategory :number,
+  parkInfo :boolean,
+  // foodSubCategory :number,
   shopFilename :string,
 }
 
