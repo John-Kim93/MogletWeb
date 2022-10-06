@@ -82,3 +82,33 @@ table .textAlignCenter {
   margin-left: 12px;
   font-size: 14px;
 }
+
+/* 인풋 스타일 초기화 */
+.filebox input[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+
+.filebox .uploadName {
+  display: inline-block;
+  height: 40px;
+  padding: 0 10px;
+  width: 60%;
+  color: #999999;
+  text-align: start;
+}
+
+.filebox label {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  vertical-align: middle;
+  background-color: #999999;
+  cursor: pointer;
+  height: 40px;
+  margin-left: 10px;
+}

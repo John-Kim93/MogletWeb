@@ -76,11 +76,11 @@ export default function MenuItem({ menu }) {
             <button
               onClick={() => {
                 updateMenu.mutate({
-                    business_shop_menu_uid : menu.uid,
+                    businessShopMenuUid : menu.uid,
                     name : name,
                     content : content,
                     price : price,
-                    is_main : isMain
+                    isMain : isMain
                   }, {
                     onSuccess: () => {
                       Swal.fire({

@@ -22,20 +22,22 @@ export function getMenuInfo() :string | MenuRes[] {
   }
   return getMenu()
 }
-export function postMenu(values :MenuCreateVal) {
+
+export function createMenu(values :MenuCreateVal) {
   const req :MenuCreateReq = {
     ...values,
     price : parseInt(values.price),
-    is_main : values.is_main ? 1 : 0
+    is_main : values.isMain ? 1 : 0
   }
   const res = apiPostMenu(req)
   return res
 }
+
 export function updateMenu(values :MenuCreateVal) {
   const req :MenuCreateReq = {
     ...values,
     price : parseInt(values.price),
-    is_main : values.is_main ? 1 : 0
+    is_main : values.isMain ? 1 : 0
   }
   const res = apiUpdateMenu(req)
   return res

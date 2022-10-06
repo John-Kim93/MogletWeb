@@ -2,7 +2,7 @@ import Layout from "../../../components/layout";
 import Header from "../../../components/header";
 import { useMutation } from 'react-query';
 import { CreateMenuForm } from "../../../components/service/menu/createMenuForm";
-import { postMenu } from "../../../repository/service/menuRepo"
+import { createMenu } from "../../../repository/service/menuRepo"
 import {useRouter} from "next/router"
 import { MenuCreateVal } from "../../../req/service/menuReq";
 import Swal from "sweetalert2";
@@ -11,8 +11,7 @@ import { useQueryClient } from "react-query";
 export default function MenuCreate() {
   const router = useRouter()
   const queryClient = useQueryClient()
-  
-  const createMenu = useMutation((values :MenuCreateVal) => postMenu(values))
+  const createMenuMutation = useMutation((values :MenuCreateVal) => createMenu(values))
   return (
     <Layout>
       <Header />
@@ -22,10 +21,10 @@ export default function MenuCreate() {
             name : '',
             content : '',
             price : '',
-            is_main : false,
+            isMain : false,
           }}
-          onSubmit={(values) => {
-            createMenu.mutate(values, {
+          onSubmit={(values :MenuCreateVal) => {
+            createMenuMutation.mutate(values, {
               onSuccess: () => {
                 Swal.fire({
                   position: 'top-end',

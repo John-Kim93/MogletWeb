@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import 'react-app-polyfill/ie11';
 import styles from '../../styles/home.module.css';
 import * as React from 'react';
 import Image from 'next/image';

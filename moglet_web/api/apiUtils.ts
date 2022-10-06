@@ -1,10 +1,5 @@
-// export const setToken = () => {
-// 	const token = localStorage.getItem('access') || ' ';
-// 	const config = {
-// 		Authorization: `Bearer ${token}`,
-// 	};
-// 	return config;
-// };
+import axios from "axios";
+
 export const setToken = () => {
 	const token = sessionStorage.access_token
 	const config = {
@@ -12,3 +7,15 @@ export const setToken = () => {
 	};
 	return config;
 };
+
+
+export const apiGetImageUrl = (formData) =>
+	axios({
+		method: 'post',
+		url: '/api/public/file',
+		headers: {
+			"Content-Type": "multipart/form-data",
+			...setToken()
+		},
+		data: formData
+	})

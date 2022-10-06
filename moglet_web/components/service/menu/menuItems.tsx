@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { getMenuInfo } from "../../../repository/service/menuRepo"
+import { getRestaurantInfo } from "../../../repository/service/restaurantInfoRepo"
 import MenuItem from "./menuItem"
 
 export default function MenuItems() :JSX.Element {
@@ -23,7 +24,6 @@ export default function MenuItems() :JSX.Element {
     return (
       <div>
         <h4>등록된 메뉴 수 : {menus.length}개</h4>
-        
         <table>
           <caption>
             등록된 메뉴 정보
@@ -38,6 +38,7 @@ export default function MenuItems() :JSX.Element {
             <col width="10%"/>
             <col width="25%"/>
           </colgroup>
+
           <thead>
             <tr>
               <th>메뉴 소개</th>

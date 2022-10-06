@@ -2,15 +2,11 @@ export interface MenuCreateVal {
   name :string,
   content :string,
   price :string,
-  is_main :boolean
+  isMain :boolean
 }
 
-export interface MenuUpdateVal {
-  business_shop_menu_uid :number,
-  name :string,
-  content :string,
-  price :string,
-  is_main :boolean
+export interface MenuUpdateVal extends MenuCreateVal {
+  businessShopMenuUid :number,
 }
 
 export interface MenuCreateReq {
@@ -20,10 +16,6 @@ export interface MenuCreateReq {
   is_main :number
 }
 
-export interface MenuUpdateReq {
+export interface MenuUpdateReq extends MenuCreateReq {
   business_shop_menu_uid :number,
-  name :string,
-  content :string,
-  price :number,
-  is_main :number
 }

@@ -34,7 +34,7 @@ export function CreateMenuForm({ initialValues, onSubmit, onCancel } : {
       }}
       validationSchema={ValidationSchema}
       onSubmit={(
-        values,
+        values :MenuCreateVal,
         { setSubmitting }
       ) => {
         onSubmit(values)
@@ -46,22 +46,22 @@ export function CreateMenuForm({ initialValues, onSubmit, onCancel } : {
           <Form>
             <div>
               메뉴명
-              <Field name="name" className={style.textInput} />
+              <Field name="name" className={styles.textInput} />
               {errors.name && touched.name ? (<div id={styles.errorMessage}>{errors.name}</div>) : null}
             </div>
             <div>
               메뉴 설명
-              <Field as="textarea" name="content" className={style.textArea}/>
+              <Field as="textarea" name="content" className={styles.textArea}/>
               {errors.content && touched.content ? (<div id={styles.errorMessage}>{errors.content}</div>) : null}
             </div>
             <div>
               가격
-              <Field name="price" className={style.textInput} />
+              <Field name="price" className={styles.textInput} />
               {errors.price && touched.price ? (<div id={styles.errorMessage}>{errors.price}</div>) : null}
             </div>
             <div>
               대표 메뉴 설정 
-              <Field type="checkbox" name="is_main" />
+              <Field type="checkBox" name="isMain" />
             </div>
             <div
               className="swal2-actions"

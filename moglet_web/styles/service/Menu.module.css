@@ -1,23 +1,5 @@
-.textInput {
-  width: 100%;
-  padding: 2px 4px;
-  border: 2px solid gray;
-  border-radius: 4px;
-  font-size: 14px;
-  maxlength: 20;
-}
-
 .inputWrap {
   display: flex;
   justify-content: flex-end;
   width: inherit;
-}
-
-.textArea {
-  width: 100%;
-  padding: 2px 4px;
-  border: 2px solid gray;
-  border-radius: 4px;
-  font-size: 14px;
-  maxlength: 255;
 }
