@@ -2,16 +2,21 @@ import Layout from "../../components/layout";
 import Header from "../../components/header";
 import RestaurantInfoItem from "../../components/service/restaurantInfo/restaurantInfoItem";
 import { apiGetRestaurantInfo } from "../../api/service/apiRestaurantInfo";
-import { useQuery } from "react-query";
+import { dehydrate, QueryClient, useQuery } from "react-query";
 import { convertRestaurantInfo } from "../../repository/service/restaurantInfoRepo";
 import LoadingPage from "../../components/loading";
 import ErrorPage from "../../components/error";
 import { RestaurantInfoVal } from "../../res/service/restaurantInfoRes";
 
-// export async function getServerSideProps() {
-//   const restauInfo = await apiGetRestaurantInfo()
-//   return { props: { restauInfo } }
-// }
+export async function getServerSideProps() {
+  const queryClient = new QueryClient()
+  await queryClient.prefetchQuery(['get_restaurantInfo'], () => apiGetRestaurantInfo())
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  }
+}
 
 export default function Restaurants() {
   const getRestaurantInfo = () => {
