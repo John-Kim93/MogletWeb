@@ -1,11 +1,16 @@
-export interface BusinessShopTime {
+export interface StringDaysAndWeeks {
+  wordDays :string,
+  wordWeeks :string
+}
+
+export interface TimeElement {
   uid :number,
-  created_time :string,
-  updated_time :string,
-  business_shop_uid :number,
-  weeks :number,
-  days :number,
-  start_time :string
-  end_time :string
-  type :number
+  element :string,
+}
+
+export interface TimeTable {
+  BUSINESS_TIME :TimeElement[],
+  BREAK_TIME :TimeElement[],
+  LAST_ORDER :TimeElement[],
+  HOLIDAY :TimeElement[],
 }

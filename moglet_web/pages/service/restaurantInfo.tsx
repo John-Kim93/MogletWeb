@@ -3,7 +3,7 @@ import Header from "../../components/header";
 import RestaurantInfoItem from "../../components/service/restaurantInfo/restaurantInfoItem";
 import { apiGetRestaurantInfo } from "../../api/service/apiRestaurantInfo";
 import { dehydrate, QueryClient, useQuery } from "react-query";
-import { convertRestaurantInfo } from "../../repository/service/restaurantInfoRepo";
+import { convertRestaurantInfoRes } from "../../repository/service/restaurantInfoRepo";
 import LoadingPage from "../../components/loading";
 import ErrorPage from "../../components/error";
 import { RestaurantInfoVal } from "../../res/service/restaurantInfoRes";
@@ -21,7 +21,7 @@ export async function getServerSideProps() {
 export default function Restaurants() {
   const getRestaurantInfo = () => {
     const res = useQuery(['get_restaurantInfo'], () => apiGetRestaurantInfo())
-    const restaurantInfo :RestaurantInfoVal = convertRestaurantInfo(res?.data?.data?.item)
+    const restaurantInfo :RestaurantInfoVal = convertRestaurantInfoRes(res?.data?.data?.item)
     
     if (res.isLoading) {
       return(

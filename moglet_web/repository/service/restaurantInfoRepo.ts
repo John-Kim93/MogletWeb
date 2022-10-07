@@ -5,7 +5,7 @@ import { RestaurantInfoRes, RestaurantInfoForUpdate, RestaurantInfoVal, subCateg
 
 const IMAGE_BASE_URL = process.env.S3_URL
 
-export function convertRestaurantInfo(values :RestaurantInfoRes) :RestaurantInfoVal {
+export function convertRestaurantInfoRes(values :RestaurantInfoRes) :RestaurantInfoVal {
   if (values) {
     const shopImage :string = `${IMAGE_BASE_URL}${values.shop_filename}`
     const restaurantInfo :RestaurantInfoVal = {
