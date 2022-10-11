@@ -1,7 +1,5 @@
-import { apiUpdateMenu } from '../../api/service/apiMenu';
 import { MenuVal, MenuRes } from '../../res/service/menuRes';
-import { MenuCreateReq, MenuCreateVal, MenuUpdateReq } from '../../req/service/menuReq';
-import { apiPostMenu } from '../../api/service/apiMenu';
+import { MenuCreateReq, MenuCreateReqVal, MenuUpdateReq } from '../../req/service/menuReq';
  
 export function convertMenuRes(menuRes :MenuRes) :MenuVal {
   const menus = {
@@ -15,17 +13,16 @@ export function convertMenuRes(menuRes :MenuRes) :MenuVal {
   return menus
 }
 
-export function createMenu(values :MenuCreateVal) {
+export function convertMenuCreate(values :MenuCreateReqVal) {
   const req :MenuCreateReq = {
     ...values,
     price : values.price,
     is_main : values.isMain ? 1 : 0
   }
-  const res = apiPostMenu(req)
-  return res
+  return req
 }
 
-export function updateMenu(values :MenuVal) {
+export function convertMenuUpdate(values :MenuVal) {
   const req :MenuUpdateReq = {
     business_shop_menu_uid : values.uid,
     name : values.name,

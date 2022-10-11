@@ -6,10 +6,11 @@ import { apiGetRestaurantInfo } from "../../api/service/apiRestaurantInfo";
 import LoadingPage from "../../components/loading";
 import ErrorPage from "../../components/error";
 import { convertTimeRes } from "../../repository/service/timeRepo";
+import { TimeTable } from "../../res/service/timeRes";
 
 export default function Time() {
   const res = useQuery(['get_restaurantInfo'], () => apiGetRestaurantInfo())
-  const time = convertTimeRes(res?.data?.data?.item)
+  const timeTable :TimeTable= convertTimeRes(res?.data?.data?.item)
 
   if (res.isLoading) {
     return(
@@ -38,7 +39,7 @@ export default function Time() {
       <Layout>
         <Header />
         <div className="serviceMainContainer">
-          <TimeItem time={time}/>
+          <TimeItem timeTable={timeTable}/>
         </div>
       </Layout>
     )

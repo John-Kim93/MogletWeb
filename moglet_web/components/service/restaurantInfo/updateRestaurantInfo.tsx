@@ -1,19 +1,19 @@
 import { useRouter } from "next/router"
 import { useQueryClient, useMutation } from "react-query"
-import { RestaurantInfoUpdateReq, RestaurantInfoUpdateVal } from "../../../req/service/restaurantInfoReq"
+import { RestaurantUpdateReq } from "../../../req/service/restaurantInfoReq"
 import UpdateRestaurantInfoForm from "./updateRestaurantInfoForm"
 import Swal from "sweetalert2"
-import { apiUpdateRestaurantInfo } from "../../../api/service/apiRestaurantInfo"
+import { apiPutRestaurantInfo } from "../../../api/service/apiRestaurantInfo"
 
 export default function UpdateRestaurantInfo({ restaurantInfo }) {
   const queryClient = useQueryClient()
   const router = useRouter()
-  const updateRestaurantInfoMutation = useMutation((values :RestaurantInfoUpdateReq) => apiUpdateRestaurantInfo(values))
+  const updateRestaurantInfoMutation = useMutation((values :RestaurantUpdateReq) => apiPutRestaurantInfo(values))
   return (
     <div>
       <UpdateRestaurantInfoForm
         initialValues={restaurantInfo}
-        onSubmit={(values :RestaurantInfoUpdateReq) => {
+        onSubmit={(values :RestaurantUpdateReq) => {
           
           updateRestaurantInfoMutation.mutate(values, {
             onSuccess: () => {

@@ -1,11 +1,11 @@
-export interface MenuCreateVal {
+export interface MenuCreateReqVal {
   name :string,
   content :string,
   price :number,
   isMain :boolean
 }
 
-export interface MenuUpdateVal extends MenuCreateVal {
+export interface MenuUpdateReqVal extends MenuCreateReqVal {
   businessShopMenuUid :number,
 }
 

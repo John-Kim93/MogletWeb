@@ -1,14 +1,12 @@
-import { useQuery } from 'react-query';
-import { apigetSubCategories, apiUpdateRestaurantInfo } from '../../api/service/apiRestaurantInfo';
-import { RestaurantInfoUpdateReq, RestaurantInfoUpdateVal } from '../../req/service/restaurantInfoReq';
-import { RestaurantInfoRes, RestaurantInfoForUpdate, RestaurantInfoVal, subCategory } from '../../res/service/restaurantInfoRes';
+import { RestaurantUpdateReq, RestaurantUpdateReqVal } from '../../req/service/restaurantInfoReq';
+import { RestaurantRes, RestaurantInit, RestaurantVal } from '../../res/service/restaurantInfoRes';
 
 const IMAGE_BASE_URL = process.env.S3_URL
 
-export function convertRestaurantInfoRes(values :RestaurantInfoRes) :RestaurantInfoVal {
+export function convertRestaurantRes(values :RestaurantRes) :RestaurantVal {
   if (values) {
     const shopImage :string = `${IMAGE_BASE_URL}${values.shop_filename}`
-    const restaurantInfo :RestaurantInfoVal = {
+    const restaurantInfo :RestaurantVal = {
       shopImage :shopImage,
       name :values.name,
       content :values.content,
@@ -29,10 +27,10 @@ export function convertRestaurantInfoRes(values :RestaurantInfoRes) :RestaurantI
   }
 }
 
-export function convertUpdateRestaurantInfo(values :RestaurantInfoRes) {
+export function convertRestaurantInit(values :RestaurantRes) {
   if (values) {
     const shopImage :string = `${IMAGE_BASE_URL}${values.shop_filename}`
-    const restaurantInfo :RestaurantInfoForUpdate = {
+    const restaurantInfo :RestaurantInit = {
       shopImage :shopImage,
       name :values.name,
       content :values.content,
@@ -49,8 +47,8 @@ export function convertUpdateRestaurantInfo(values :RestaurantInfoRes) {
   }
 }
 
-export function convertUpdateReq(values :RestaurantInfoUpdateVal) : RestaurantInfoUpdateReq{
-  const req :RestaurantInfoUpdateReq = {
+export function convertRestaurantUpdate(values :RestaurantUpdateReqVal) : RestaurantUpdateReq{
+  const req :RestaurantUpdateReq = {
     ...values,
     price_avg_start : values.priceAvgStart,
     price_avg_end : values.priceAvgEnd,
@@ -61,19 +59,19 @@ export function convertUpdateReq(values :RestaurantInfoUpdateVal) : RestaurantIn
   return req
 }
 
-export function getSubCategories(foodMainCategory :number) :string | subCategory[] {
-  const getInfo = () => {
-    const res = useQuery(['get_restaurantInfo_mainCategory'], () => apigetSubCategories(foodMainCategory))
-    if(res.isLoading) {
-      return "로딩중"
-    }
-    if(res.isError) {
-      throw '에러 발생'
-    }
-    if(res.isSuccess) {
-      const result :subCategory[] = res.data.data.item
-      return result
-    }
-  }
-  return getInfo()
-}
+// export function getSubCategories(foodMainCategory :number) :string | subCategory[] {
+//   const getInfo = () => {
+//     const res = useQuery(['get_restaurantInfo_mainCategory'], () => apigetSubCategories(foodMainCategory))
+//     if(res.isLoading) {
+//       return "로딩중"
+//     }
+//     if(res.isError) {
+//       throw '에러 발생'
+//     }
+//     if(res.isSuccess) {
+//       const result :subCategory[] = res.data.data.item
+//       return result
+//     }
+//   }
+//   return getInfo()
+// }

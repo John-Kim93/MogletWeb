@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { MenuCreateReq } from '../../req/service/menuReq';
-import { RestaurantInfoUpdateReq } from '../../req/service/restaurantInfoReq';
 import { setToken } from '../apiUtils';
 
 export const apiGetMenu = () =>
@@ -33,7 +32,7 @@ axios({
 	}
 })
 
-export const apiUpdateMenu = (req :MenuCreateReq) =>
+export const apiPutMenu = (req :MenuCreateReq) =>
 	axios({
 		method: 'put',
 		url: '/api/private/businessMenu',

@@ -3,15 +3,15 @@ import Header from "../../../components/header";
 import UpdateRestaurantInfo from "../../../components/service/restaurantInfo/updateRestaurantInfo";
 import { useQuery } from "react-query";
 import { apiGetRestaurantInfo } from "../../../api/service/apiRestaurantInfo";
-import { RestaurantInfoForUpdate } from "../../../res/service/restaurantInfoRes";
-import { convertUpdateRestaurantInfo } from "../../../repository/service/restaurantInfoRepo";
+import { RestaurantInit } from "../../../res/service/restaurantInfoRes";
+import { convertRestaurantInit } from "../../../repository/service/restaurantInfoRepo";
 import LoadingPage from "../../../components/loading";
 import ErrorPage from "../../../components/error";
 
 export default function Restaurants() {
   const res = useQuery(['get_restaurantInfo'], () => apiGetRestaurantInfo())
-  const restaurantInfo :RestaurantInfoForUpdate = convertUpdateRestaurantInfo(res?.data?.data?.item)
-    
+  const restaurantInfo :RestaurantInit = convertRestaurantInit(res?.data?.data?.item)
+
   if (res.isLoading) {
     return(
       <Layout>

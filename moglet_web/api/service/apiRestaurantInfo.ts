@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { RestaurantInfoUpdateReq } from '../../req/service/restaurantInfoReq';
+import { RestaurantUpdateReq } from '../../req/service/restaurantInfoReq';
 import { setToken } from '../apiUtils';
 
 export const apiGetRestaurantInfo = () =>
@@ -18,7 +18,7 @@ export const apigetSubCategories = (req :number) =>
 		headers: {...setToken()},
 	})
 
-export const apiUpdateRestaurantInfo = (req :RestaurantInfoUpdateReq) => 
+export const apiPutRestaurantInfo = (req :RestaurantUpdateReq) => 
 axios({
 	method: 'put',
 	url: '/api/private/businessInfo',

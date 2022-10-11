@@ -3,12 +3,12 @@ import { useState } from "react"
 import Image from "next/image"
 import * as yup from "yup";
 // import "yup-phone";
-import { RestaurantInfoForUpdate } from "../../../res/service/restaurantInfoRes";
+import { RestaurantInit } from "../../../res/service/restaurantInfoRes";
 import styles from '../../../styles/service/common.module.css';
 import style from "../../../styles/service/RestaurantInfo.module.css"
 import { getImageUrl } from "../../../repository/utilRepo";
-import { convertUpdateReq } from "../../../repository/service/restaurantInfoRepo";
-import { RestaurantInfoUpdateReq } from "../../../req/service/restaurantInfoReq";
+import { convertRestaurantUpdate } from "../../../repository/service/restaurantInfoRepo";
+import { RestaurantUpdateReq } from "../../../req/service/restaurantInfoReq";
 // import { getSubCategories } from "../../../repository/service/restaurantInfoRepo";
 
 const ValidationSchema = yup.object().shape({
@@ -52,7 +52,7 @@ const ValidationSchema = yup.object().shape({
 });
 
 export default function UpdateRestaurantInfoForm({ initialValues, onSubmit, onCancel } :{
-  initialValues :RestaurantInfoForUpdate
+  initialValues :RestaurantInit
   onSubmit :any
   onCancel :any
 }) :JSX.Element{
@@ -67,10 +67,10 @@ export default function UpdateRestaurantInfoForm({ initialValues, onSubmit, onCa
       }}
       validationSchema={ValidationSchema}
       onSubmit={(
-        values :RestaurantInfoForUpdate,
+        values :RestaurantInit,
         { setSubmitting }
       ) => {
-        const req :RestaurantInfoUpdateReq = convertUpdateReq(values)
+        const req :RestaurantUpdateReq = convertRestaurantUpdate(values)
         onSubmit(req)
         setSubmitting(true)
       }}

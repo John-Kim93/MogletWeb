@@ -10,7 +10,7 @@ interface ShopTimeInfoRes {
   type: number
 }
 
-export interface RestaurantInfoRes {
+export interface RestaurantRes {
   name :string,
   content :string,
   shop_filename :string,
@@ -34,7 +34,7 @@ export interface RestaurantInfoRes {
   business_shop_time_list :ShopTimeInfoRes[]
 }
 
-interface RestaurantInfo {
+interface Restaurant {
   shopImage :string,
   name :string,
   content :string,
@@ -45,7 +45,7 @@ interface RestaurantInfo {
   foodSubCategories :number[],
 }
 
-export interface RestaurantInfoVal extends RestaurantInfo {
+export interface RestaurantVal extends Restaurant {
   addressPlaceName :string,
   addressRoadName :string,
   priceAvg : string,
@@ -55,7 +55,7 @@ export interface RestaurantInfoVal extends RestaurantInfo {
   countData :string,
 }
 
-export interface RestaurantInfoForUpdate extends RestaurantInfo {
+export interface RestaurantInit extends Restaurant {
   priceAvgStart :number,
   priceAvgEnd :number,
   shopFilename :string,

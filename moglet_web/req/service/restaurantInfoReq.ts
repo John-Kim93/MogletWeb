@@ -1,4 +1,4 @@
-export interface RestaurantInfoUpdateVal {
+export interface RestaurantUpdateReqVal {
   name :string,
   content :string,
   phone :string,
@@ -10,7 +10,7 @@ export interface RestaurantInfoUpdateVal {
   shopFilename :string,
 }
 
-export interface RestaurantInfoUpdateReq {
+export interface RestaurantUpdateReq {
   name :string,
   content :string,
   phone :string,
