@@ -25,11 +25,13 @@ export default function MenuItem({ menuItem }) {
         <td className="textAlignCenter">{menu.isMain ? 'O' : ''}</td>
         <td>
           <button
+            className="update"
             onClick={() => setEditMenu(!editMenu)}
           >
             메뉴 수정
           </button>
           <button
+            className="delete"
             onClick={() => deleteMenu.mutate(menu.uid, {
               onSuccess: () => {
                 Swal.fire({

@@ -7,7 +7,7 @@ export default function TimeItem({ timeTable }) {
     <div>
       <h4>영업 시간</h4>
       <button
-        className="swal2-confirm swal2-styled"
+        className="create"
         onClick={() => {router.push("/service/create/timeCreate")}}
       >영업 시간 생성</button>
       <hr/>

@@ -29,6 +29,7 @@ export default function RestaurantInfoItem({ restaurantInfo }) {
       <h4>카카오 : {restaurantInfo.kakaoInfo}</h4>
       <h4>누적 조회/좋아요/리뷰 수 : {restaurantInfo.countData}</h4>
       <button
+        className='update'
         onClick={() => router.push('/service/update/restaurantInfoUpdate')}
       >
         정보 수정

@@ -8,7 +8,7 @@
   right: 0;
   background: white;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 10px 25px;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%);
 }
@@ -16,4 +16,8 @@
 .nav {
   display: flex;
   align-items: center;
+}
+
+.logout {
+  cursor: pointer;
 }

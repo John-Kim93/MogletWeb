@@ -10,7 +10,9 @@ export default function MenuItems({ menuRes }) :JSX.Element {
         <caption>
           등록된 메뉴 정보
           <Link href="/service/create/menuCreate">
-            <button>메뉴 추가</button>
+            <button
+              className="create"
+            >메뉴 추가</button>
           </Link>
         </caption>
         <colgroup>

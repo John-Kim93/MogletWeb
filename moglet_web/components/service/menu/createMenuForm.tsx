@@ -1,7 +1,7 @@
 import { Formik, Form, Field } from "formik";
 import styles from '../../../styles/service/common.module.css';
 import * as yup from "yup";
-import { MenuCreateVal } from "../../../req/service/menuReq";
+import { MenuCreateReqVal } from "../../../req/service/menuReq";
 
 const ValidationSchema = yup.object().shape({
   name :yup
@@ -22,7 +22,7 @@ const ValidationSchema = yup.object().shape({
 });
 
 export function CreateMenuForm({ initialValues, onSubmit, onCancel } : {
-  initialValues :MenuCreateVal
+  initialValues :MenuCreateReqVal
   onSubmit :any
   onCancel :any
 }) :JSX.Element {
@@ -33,7 +33,7 @@ export function CreateMenuForm({ initialValues, onSubmit, onCancel } : {
       }}
       validationSchema={ValidationSchema}
       onSubmit={(
-        values :MenuCreateVal,
+        values :MenuCreateReqVal,
         { setSubmitting }
       ) => {
         onSubmit(values)
@@ -68,16 +68,16 @@ export function CreateMenuForm({ initialValues, onSubmit, onCancel } : {
             >
               <button
                 type="submit"
-                className="swal2-confirm swal2-styled"
+                className="create"
               >
-                OK
+                생성
               </button>
               <button
                 type="button"
                 onClick={onCancel}
-                className="swal2-cancel swal2-styled"
+                className="delete"
               >
-                Cancel
+                취소
               </button>
             </div>
           </Form>

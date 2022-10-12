@@ -146,18 +146,18 @@ export default function UpdateRestaurantInfoForm({ initialValues, onSubmit, onCa
               >
                 <button
                   type="submit"
-                  className="swal2-confirm swal2-styled"
+                  className="update"
                   disabled={isSubmitting}
                 >
-                  OK
+                  수정
                 </button>
                 <button
                   type="button"
                   onClick={onCancel}
-                  className="swal2-cancel swal2-styled"
+                  className="delete"
                   disabled={isSubmitting}
                 >
-                  Cancel
+                  취소
                 </button>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import { Formik, Form, Field } from "formik";
 import styles from '../../../styles/service/common.module.css';
 import * as yup from "yup";
+import { MenuCreateReqVal } from "../../../req/service/menuReq";
 
 const ValidationSchema = yup.object().shape({
   // name :yup
@@ -10,7 +11,7 @@ const ValidationSchema = yup.object().shape({
 });
 
 export function CreateTimeForm({ initialValues, onSubmit, onCancel } : {
-  initialValues :MenuCreateVal
+  initialValues :MenuCreateReqVal
   onSubmit :any
   onCancel :any
 }) :JSX.Element {
@@ -21,7 +22,7 @@ export function CreateTimeForm({ initialValues, onSubmit, onCancel } : {
       }}
       validationSchema={ValidationSchema}
       onSubmit={(
-        values :MenuCreateVal,
+        values :MenuCreateReqVal,
         { setSubmitting }
       ) => {
         onSubmit(values)
