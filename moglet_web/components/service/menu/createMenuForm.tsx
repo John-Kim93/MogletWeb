@@ -58,10 +58,10 @@ export function CreateMenuForm({ initialValues, onSubmit, onCancel } : {
               <Field name="price" className={styles.textInput} />
               {errors.price && touched.price ? (<div id={styles.errorMessage}>{errors.price}</div>) : null}
             </div>
-            <div>
+            <label>
               대표 메뉴 설정 
               <Field type="checkBox" name="isMain" />
-            </div>
+            </label>
             <div
               className="swal2-actions"
               style={{ display: "flex", fontSize: "0.9em" }}
@@ -75,7 +75,7 @@ export function CreateMenuForm({ initialValues, onSubmit, onCancel } : {
               <button
                 type="button"
                 onClick={onCancel}
-                className="delete"
+                className="cancel"
               >
                 취소
               </button>

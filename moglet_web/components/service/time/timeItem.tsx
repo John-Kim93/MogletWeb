@@ -1,16 +1,18 @@
 import { TimeElement } from "../../../res/service/timeRes"
 import { useRouter } from "next/router"
+import style from "../../../styles/service/Time.module.css"
 
 export default function TimeItem({ timeTable }) {
   const router = useRouter()
+
   return (
     <div>
-      <h4>영업 시간</h4>
       <button
         className="create"
         onClick={() => {router.push("/service/create/timeCreate")}}
-      >영업 시간 생성</button>
+        >생성</button>
       <hr/>
+      <h4>영업 시간</h4>
       {timeTable.BUSINESS_TIME[0]
       ? timeTable.BUSINESS_TIME.map((businessTime :TimeElement) => {
         return (
@@ -24,7 +26,13 @@ export default function TimeItem({ timeTable }) {
       {timeTable.BREAK_TIME[0]
       ? timeTable.BREAK_TIME.map((breakTime :TimeElement) => {
         return (
-          <h4 key={breakTime.uid}>{breakTime.element}</h4>
+          <>
+            <h4 className={style.text} key={breakTime.uid}>{breakTime.element}</h4>
+            <button
+              className="delete"
+              // onClick={}
+            >삭제</button>
+          </>
         )
       })
       : <h4>브레이크 타임 없음</h4>

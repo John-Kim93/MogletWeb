@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { MenuCreateReq } from '../../req/service/menuReq';
 import { setToken } from '../apiUtils';
+import { MenuCreateReq } from '../../req/service/menuReq';
 
 export const apiGetMenu = () =>
 	axios({

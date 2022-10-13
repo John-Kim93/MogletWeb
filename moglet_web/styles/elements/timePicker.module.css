@@ -1,0 +1,24 @@
+.wrapper {
+  display: flex;
+}
+
+.timeBox {
+  display: flex;
+  width: 10rem;
+  height: 2.5rem;
+  border: 3px solid #D8D9CF80;
+  border-radius: 5px;
+  padding: 4px;
+  font-size: 1rem;
+  justify-content: center;
+}
+
+.timeInput {
+  margin-right: auto;
+  margin-left: auto;
+  width: 2.5rem;
+  border: none;
+}
+.timeInput:focus {
+  outline: none;
+}

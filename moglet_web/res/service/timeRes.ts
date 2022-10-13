@@ -1,7 +1,3 @@
-export interface StringDaysAndWeeks {
-  wordDays :string,
-  wordWeeks :string
-}
 
 export interface TimeElement {
   uid :number,

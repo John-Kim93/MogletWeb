@@ -154,7 +154,7 @@ export default function UpdateRestaurantInfoForm({ initialValues, onSubmit, onCa
                 <button
                   type="button"
                   onClick={onCancel}
-                  className="delete"
+                  className="cancel"
                   disabled={isSubmitting}
                 >
                   취소

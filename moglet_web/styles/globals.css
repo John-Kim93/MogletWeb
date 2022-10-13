@@ -153,9 +153,15 @@ button.update:hover{
   background: #218838;
 }
 button.delete{
-  background: #dc3545;
+  background: #C70039;
 }
 button.delete:hover{
+  background: #900C27;
+}
+button.cancel{
+  background: #dc3545;
+}
+button.cancel:hover{
   background: #c82333;
 }
 button:active,

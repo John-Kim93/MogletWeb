@@ -74,6 +74,7 @@ export default function MenuItem({ menuItem }) {
           </td>
           <td>
             <button
+              className="update"
               onClick={() => {
                 updateMenu.mutate(update(menu), {
                     onSuccess: () => {
@@ -98,7 +99,7 @@ export default function MenuItem({ menuItem }) {
             >
               완료
             </button>
-            <button onClick={() => {setEditMenu(!editMenu)}}>
+            <button className="cancel" onClick={() => {setEditMenu(!editMenu)}}>
               취소
             </button>
           </td>

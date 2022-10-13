@@ -1,5 +1,4 @@
 import { apiGetImageUrl } from "../api/apiUtils";
-import { StringDaysAndWeeks } from "../res/service/timeRes";
 
 export async function getImageUrl(NewImgFile :File) :Promise<any> {
   if (NewImgFile){
@@ -8,6 +7,16 @@ export async function getImageUrl(NewImgFile :File) :Promise<any> {
     const res = await apiGetImageUrl(formData)
     return res
   }
+}
+
+export interface StringDaysAndWeeks {
+  wordDays :string,
+  wordWeeks :string
+}
+
+export interface NumberDaysAndWeeks {
+  days :number,
+  weeks :number
 }
 
 export function calculateBinaryCodeToString(days :number, weeks :number) :StringDaysAndWeeks{
@@ -38,5 +47,24 @@ export function calculateBinaryCodeToString(days :number, weeks :number) :String
   return {
     wordDays,
     wordWeeks
+  }
+}
+
+export function calculateStringToBinaryCode(daysList :string[], weeksList :string[]) :NumberDaysAndWeeks{
+  let days = 0
+  if (daysList[0]) {
+    daysList.forEach((day) => {
+      days += parseInt(day)
+    })
+  }
+  let weeks = 0
+  if (weeksList[0]) {
+    weeksList.forEach((week) => {
+      weeks += parseInt(week)
+    })
+  }
+  return {
+    days,
+    weeks,
   }
 }
