@@ -1,10 +1,31 @@
 import { TimeElement } from "../../../res/service/timeRes"
 import { useRouter } from "next/router"
 import style from "../../../styles/service/Time.module.css"
+import { useMutation, useQueryClient } from "react-query"
+import { apiDeleteTime } from "../../../api/service/apiTime"
+import Swal from "sweetalert2"
 
 export default function TimeItem({ timeTable }) {
   const router = useRouter()
+  const queryClient = useQueryClient()
 
+  const deleteTime = useMutation((uid :number) => apiDeleteTime(uid), {
+    onSuccess: () => {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: '해당 시간이 삭제되었습니다.',
+        showConfirmButton: false,
+        timer: 2000
+      })
+      queryClient.invalidateQueries('get_restaurantInfo')
+    },
+    onError: (error) => {
+      console.log('onError' + error);
+    },
+    onSettled: () => { // 요청이 성공하든, 에러가 발생되든 실행하고 싶은 경우
+    }
+  })
   return (
     <div>
       <button
@@ -30,7 +51,7 @@ export default function TimeItem({ timeTable }) {
             <h4 className={style.text} key={breakTime.uid}>{breakTime.element}</h4>
             <button
               className="delete"
-              // onClick={}
+              onClick={() => deleteTime.mutate(breakTime.uid)}
             >삭제</button>
           </>
         )
