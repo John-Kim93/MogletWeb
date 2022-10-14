@@ -1,22 +1,23 @@
 /** @type {import('next').NextConfig} */
+import { S3_URL, API_URL, IMAGE_DOMAIN, VIDEO_DOMAIN } from "/config/index" 
+
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['main-server-moglet-bucket.s3.ap-northeast-2.amazonaws.com/'],
+    domains: [IMAGE_DOMAIN],
   },
   swcMinify: true,
   env: {
-    S3_URL : "https://main-server-moglet-bucket.s3.ap-northeast-2.amazonaws.com/"
+    S3_URL : S3_URL
   },
   async rewrites() {
     return [
       {
         source: "/api/:path*",
-        destination: "http://43.200.237.200:3457/api/:path*",
+        destination: API_URL,
       },
     ]
   },
 }
 
 module.exports = nextConfig
-/* video domain : main-server-moglet-bucket-media-convert */
