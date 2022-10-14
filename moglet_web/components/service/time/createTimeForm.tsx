@@ -3,6 +3,7 @@ import styles from '../../../styles/service/common.module.css';
 import * as yup from "yup";
 import TimePicker from "../../elements/timePicker";
 import { TimeCreateReqVal } from "../../../req/service/timeReq";
+import { useState } from "react";
 
 const ValidationSchema = yup.object().shape({
   // name :yup
@@ -15,6 +16,7 @@ export function CreateTimeForm({ onSubmit, onCancel } : {
   onSubmit :any
   onCancel :any
 }) :JSX.Element {
+  const [validation, setValidation] = useState(true)
   return (
     <Formik
       initialValues={{
@@ -146,7 +148,17 @@ export function CreateTimeForm({ onSubmit, onCancel } : {
               : <>
                   <div id="timePicker">몇시부터 몇시?</div>
                   <label>
-                    <TimePicker time={values.time} setFieldValue={(value :string) => setFieldValue("time", value, true)} />
+                    <TimePicker
+                      time={values.time}
+                      setTime={(value :string) => setFieldValue("time", value, true)}
+                      setValidation={(value :null|string) => {
+                        if (value) {
+                          setValidation(true)
+                        } else {
+                          setValidation(false)
+                        }
+                      }}
+                    />
                   </label>
                 </>
             }
@@ -154,12 +166,22 @@ export function CreateTimeForm({ onSubmit, onCancel } : {
             <div
               style={{ display: "flex", fontSize: "0.9em" }}
             >
-              <button
-                type="submit"
-                className="create"
-              >
-                생성
-              </button>
+              {validation
+                ? <button
+                    type="submit"
+                    className="create"
+                  >
+                    생성
+                  </button>
+                : <button
+                    type="submit"
+                    className="create"
+                    disabled={true}
+                  >
+                    생성
+                  </button>
+              }
+              
               <button
                 type="button"
                 onClick={onCancel}

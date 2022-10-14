@@ -8,7 +8,7 @@ import { convertRestaurantInit } from "../../../repository/service/restaurantInf
 import LoadingPage from "../../../components/loading";
 import ErrorPage from "../../../components/error";
 
-export default function Restaurants() {
+export default function RestaurantInfoUpdate() {
   const res = useQuery(['get_restaurantInfo'], () => apiGetRestaurantInfo())
   const restaurantInfo :RestaurantInit = convertRestaurantInit(res?.data?.data?.item)
 

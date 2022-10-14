@@ -33,47 +33,65 @@ export default function TimeItem({ timeTable }) {
         onClick={() => {router.push("/service/create/timeCreate")}}
         >생성</button>
       <hr/>
-      <h4>영업 시간</h4>
+      <h3>영업 시간</h3>
       {timeTable.BUSINESS_TIME[0]
       ? timeTable.BUSINESS_TIME.map((businessTime :TimeElement) => {
         return (
-          <h4 key={businessTime.uid}>{businessTime.element}</h4>
+          <div key={businessTime.uid}>
+            <h4 className={style.text}>{businessTime.element}</h4>
+            <button
+              className="delete"
+              onClick={() => deleteTime.mutate(businessTime.uid)}
+            >삭제</button>
+          </div>
         )
       })
       : <h4>영업 시간 없음</h4>
       }
       <hr/>
-      <h4>브레이크 타임</h4>
+      <h3>브레이크 타임</h3>
       {timeTable.BREAK_TIME[0]
       ? timeTable.BREAK_TIME.map((breakTime :TimeElement) => {
         return (
-          <>
-            <h4 className={style.text} key={breakTime.uid}>{breakTime.element}</h4>
+          <div key={breakTime.uid}>
+            <h4 className={style.text}>{breakTime.element}</h4>
             <button
               className="delete"
               onClick={() => deleteTime.mutate(breakTime.uid)}
             >삭제</button>
-          </>
+          </div>
         )
       })
       : <h4>브레이크 타임 없음</h4>
       }
       <hr/>
-      <h4>라스트 오더</h4>
+      <h3>라스트 오더</h3>
       {timeTable.LAST_ORDER[0]
       ? timeTable.LAST_ORDER.map((lastOrder :TimeElement) => {
         return (
-          <h4 key={lastOrder.uid}>{lastOrder.element}</h4>
+          <div key={lastOrder.uid}>
+            <h4 className={style.text}>{lastOrder.element}</h4>
+            <button
+              className="delete"
+              onClick={() => deleteTime.mutate(lastOrder.uid)}
+            >삭제</button>
+          </div>
         )
       })
       : <h4>라스트 오더 없음</h4>
       }
       <hr/>
-      <h4>휴일</h4>
+      <h3>휴일</h3>
       {timeTable.HOLIDAY[0]
       ? timeTable.HOLIDAY.map((holiday :TimeElement) => {
         return (
-          <h4 key={holiday.uid}>{holiday.element}</h4>
+          <div key={holiday.uid}>
+            <h4 className={style.text}>{holiday.element}</h4>
+            <button
+              className="delete"
+              onClick={() => deleteTime.mutate(holiday.uid)}
+            >삭제</button>
+          </div>
         )
       })
       : <h4>휴일 없음</h4>

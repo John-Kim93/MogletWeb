@@ -22,3 +22,7 @@
 .timeInput:focus {
   outline: none;
 }
+
+.errorMessage {
+  color: red;
+}
