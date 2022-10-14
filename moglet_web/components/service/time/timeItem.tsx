@@ -40,6 +40,18 @@ export default function TimeItem({ timeTable }) {
           <div key={businessTime.uid}>
             <h4 className={style.text}>{businessTime.element}</h4>
             <button
+              className="update"
+              onClick={() => {router.push({
+                  pathname: "/service/update/timeUpdate",
+                  query: {
+                    businessShopTimeUid : businessTime.uid,
+                    type : "영업 시간",
+                    time : `${businessTime.element.slice(0, 2)}${businessTime.element.slice(3, 5)}${businessTime.element.slice(8, 10)}${businessTime.element.slice(11, 13)}`,
+                    days : businessTime.element.slice(15, businessTime.element.length - 1),
+                  }
+              })}}
+              >수정</button>
+            <button
               className="delete"
               onClick={() => deleteTime.mutate(businessTime.uid)}
             >삭제</button>

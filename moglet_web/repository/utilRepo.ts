@@ -50,7 +50,7 @@ export function calculateBinaryCodeToString(days :number, weeks :number) :String
   }
 }
 
-export function calculateStringToBinaryCode(daysList :string[], weeksList :string[]) :NumberDaysAndWeeks{
+export function sumBinaryCode(daysList :string[], weeksList :string[]) :NumberDaysAndWeeks{
   let days = 0
   if (daysList[0]) {
     daysList.forEach((day) => {
@@ -66,5 +66,36 @@ export function calculateStringToBinaryCode(daysList :string[], weeksList :strin
   return {
     days,
     weeks,
+  }
+}
+
+export function convertStringArrayToBinaryCodeArray(data :string[], type :string) :string[] {
+  switch (type) {
+    case "days" :
+      if (!data[0]) {
+        return []
+      }
+      const dayToNum = {
+        "월" : '1',
+        "화" : '2',
+        "수" : '4',
+        "목" : '8',
+        "금" : '16',
+        "토" : '32',
+        "일" : '64',
+      }
+      return data.map((day) => dayToNum[day])
+      case "weeks" :
+        if (!data[0]){
+          return []
+        }
+        const weekToNum = {
+          "첫째 주" : '1',
+          "둘째 주" : '2',
+          "셋째 주" : '4',
+          "넷째 주" : '8',
+          "다섯째 주" : '16',
+        }
+        return data.map((week) => weekToNum[week])
   }
 }

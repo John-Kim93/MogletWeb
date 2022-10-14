@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TimeCreateReq } from '../../req/service/timeReq';
+import { TimeCreateReq, TimeUpdateReq } from '../../req/service/timeReq';
 import { setToken } from '../apiUtils';
 
 export const apiPostTime = (req :TimeCreateReq) =>
@@ -20,5 +20,17 @@ export const apiDeleteTime = (uid :number) =>
 		url: `/api/private/businessTime?business_shop_time_uid=${uid}`,
 		headers: {
 			...setToken()
+		}
+	})
+
+export const apiPutTime = (req :TimeUpdateReq) =>
+	axios({
+		method: 'put',
+		url: '/api/private/businessTime',
+		headers: {
+			...setToken()
+		},
+		data: {
+			...req
 		}
 	})

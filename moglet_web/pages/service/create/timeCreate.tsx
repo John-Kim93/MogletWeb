@@ -20,13 +20,12 @@ export default function MenuCreate() {
         <CreateTimeForm
           onSubmit={(values :TimeCreateReqVal) => {
             const req :TimeCreateReq= convertTimeCreate(values)
-            console.log('req', req)
             createTimeMutation.mutate(req, {
               onSuccess: () => {
                 Swal.fire({
                   position: 'top-end',
                   icon: 'success',
-                  title: '영업 시간이 생성되었습니다.',
+                  title: '생성되었습니다.',
                   showConfirmButton: false,
                   timer: 2000
                 })

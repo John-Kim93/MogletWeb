@@ -1,7 +1,7 @@
-import { TimeCreateReq, TimeCreateReqVal } from '../../req/service/timeReq';
+import { TimeCreateReq, TimeCreateReqVal, TimeUpdateReq, TimeUpdateReqVal } from '../../req/service/timeReq';
 import { RestaurantRes } from '../../res/service/restaurantInfoRes';
 import { TimeTable, TimeElement } from '../../res/service/timeRes';
-import { calculateBinaryCodeToString, calculateStringToBinaryCode, NumberDaysAndWeeks, StringDaysAndWeeks } from '../utilRepo';
+import { calculateBinaryCodeToString, sumBinaryCode, NumberDaysAndWeeks, StringDaysAndWeeks } from '../utilRepo';
 
 export function convertTimeRes(values :RestaurantRes) :TimeTable {
   if (values) {
@@ -52,7 +52,7 @@ export function convertTimeCreate(values :TimeCreateReqVal) :TimeCreateReq  {
   let days = 0
   let weeks = 0
   if (!values.everyDay || !values.everyWeek) {
-    const result :NumberDaysAndWeeks = calculateStringToBinaryCode(values.days, values.weeks)
+    const result :NumberDaysAndWeeks = sumBinaryCode(values.days, values.weeks)
     days = result.days
     weeks = result.weeks
   }
@@ -67,6 +67,29 @@ export function convertTimeCreate(values :TimeCreateReqVal) :TimeCreateReq  {
     start_time: startTime,
     end_time: endTime,
     type,
+  }
+  return req
+}
+
+export function convertTimeUpdate(values :TimeUpdateReqVal) :TimeUpdateReq  {
+  let days = 0
+  let weeks = 0
+  if (!values.everyDay || !values.everyWeek) {
+    const result :NumberDaysAndWeeks = sumBinaryCode(values.days, values.weeks)
+    days = result.days
+    weeks = result.weeks
+  }
+  const startTime = values.time.slice(0, 2) + ":" + values.time.slice(2, 4)
+  const endTime = values.time.slice(4, 6) + ":" + values.time.slice(6, 8)
+
+  const type = typeConverter(values.type)
+
+  const req = {
+    business_shop_time_uid: parseInt(values.businessShopTimeUid),
+    weeks,
+    days,
+    start_time: startTime,
+    end_time: endTime,
   }
   return req
 }

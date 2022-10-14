@@ -1,9 +1,10 @@
 import { Formik, Form, Field } from "formik";
 import TimePicker from "../../elements/timePicker";
-import { TimeCreateReqVal } from "../../../req/service/timeReq";
+import { TimeUpdateReqVal } from "../../../req/service/timeReq";
 import { useState } from "react";
 
-export function CreateTimeForm({ onSubmit, onCancel } : {
+export function UpdateTimeForm({initialValues, onSubmit, onCancel } : {
+  initialValues :TimeUpdateReqVal
   onSubmit :any
   onCancel :any
 }) :JSX.Element {
@@ -11,18 +12,12 @@ export function CreateTimeForm({ onSubmit, onCancel } : {
   return (
     <Formik
       initialValues={{
-        type: "영업 시간",
-        everyWeek: true,
-        everyDay: true,
-        weeks: [],
-        days: [],
-        time: "00002400"
+        ...initialValues
       }}
       onSubmit={(
-        values :TimeCreateReqVal,
+        values :TimeUpdateReqVal,
         { setSubmitting }
       ) => {
-        // alert(JSON.stringify(values))
         onSubmit(values)
         setSubmitting(true)
       }}
