@@ -25,26 +25,6 @@ export function UpdateTimeForm({initialValues, onSubmit, onCancel } : {
       {({ errors, touched, values, setFieldValue }) => {
         return (
           <Form>
-            <div id="type-group">항목을 선택해 주세요.</div>
-            <div role="group" aria-labelledby="type-group">
-              <label>
-                <Field type="radio" name="type" value="영업 시간" />
-                영업 시간
-              </label>
-              <label>
-                <Field type="radio" name="type" value="브레이크 타임" />
-                브레이크 타임
-              </label>
-              <label>
-                <Field type="radio" name="type" value="라스트 오더" />
-                라스트 오더
-              </label>
-              <label>
-                <Field type="radio" name="type" value="정기 휴무" />
-                정기 휴무
-              </label>
-            </div>
-            <hr/>
             {/* {errors.name && touched.name ? (<div id={styles.errorMessage}>{errors.name}</div>) : null} */}
             {values.type == "정기 휴무"
               ? <div>
@@ -136,6 +116,7 @@ export function UpdateTimeForm({initialValues, onSubmit, onCancel } : {
                   <label>
                     <TimePicker
                       time={values.time}
+                      type={values.type}
                       setTime={(value :string) => setFieldValue("time", value, true)}
                       setValidation={(value :null|string) => {
                         if (value) {
@@ -146,9 +127,9 @@ export function UpdateTimeForm({initialValues, onSubmit, onCancel } : {
                       }}
                     />
                   </label>
+                  <hr/>
                 </>
             }
-            <hr/>
             <div
               style={{ display: "flex", fontSize: "0.9em" }}
             >
@@ -157,14 +138,14 @@ export function UpdateTimeForm({initialValues, onSubmit, onCancel } : {
                     type="submit"
                     className="create"
                   >
-                    생성
+                    수정
                   </button>
                 : <button
                     type="submit"
                     className="create"
                     disabled={true}
                   >
-                    생성
+                    수정
                   </button>
               }
               

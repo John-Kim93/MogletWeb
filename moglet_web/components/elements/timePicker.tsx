@@ -1,7 +1,7 @@
 import { useState } from "react"
 import style from "../../styles/elements/timePicker.module.css"
 
-export default function TimePicker({ time, setTime, setValidation }) {
+export default function TimePicker({ time, type, setTime, setValidation }) {
   const [startHour, setStartHour] = useState(time.slice(0, 2))
   const [startMinute, setStartMinute] = useState(time.slice(2, 4))
   const [endHour, setEndHour] = useState(time.slice(4, 6))
@@ -46,7 +46,7 @@ export default function TimePicker({ time, setTime, setValidation }) {
           }}
           >
           </input>
-        :
+        <span>:</span>
         <input
           className={style.timeInput}
           value={startMinute}
@@ -60,36 +60,42 @@ export default function TimePicker({ time, setTime, setValidation }) {
             setValidation(errorMessage)
           }}></input>
       </div>
-      <span> ~ </span>
-      <div className={style.timeBox}>
-        <input
-          className={style.timeInput}
-          value={endHour}
-          maxLength={2}
-          onChange={(e) => { 
-            const hour = e.target.value
-            setEndHour(hour) 
-            if (hourValidation(hour)) {
-              setTime(startHour + startMinute + hour + endMinute)
-            }
-            setValidation(errorMessage)
-          }}
-          >
-          </input>
-        :
-        <input
-          className={style.timeInput}
-          value={endMinute}
-          maxLength={2}
-          onChange={(e) => {
-            const minute = e.target.value
-            setEndMinute(minute) 
-            if (minuteValidation(minute)) {
-              setTime(startHour + startMinute + endHour + minute)
-            }
-            setValidation(errorMessage)
-          }}></input>
-      </div>
+      {type == "라스트 오더"
+        ? null
+        : <>
+            <span> ~ </span>
+            <div className={style.timeBox}>
+              <input
+                className={style.timeInput}
+                value={endHour}
+                maxLength={2}
+                onChange={(e) => { 
+                  const hour = e.target.value
+                  setEndHour(hour) 
+                  if (hourValidation(hour)) {
+                    setTime(startHour + startMinute + hour + endMinute)
+                  }
+                  setValidation(errorMessage)
+                }}
+              ></input>
+              <span>:</span>
+              <input
+                className={style.timeInput}
+                value={endMinute}
+                maxLength={2}
+                onChange={(e) => {
+                  const minute = e.target.value
+                  setEndMinute(minute) 
+                  if (minuteValidation(minute)) {
+                    setTime(startHour + startMinute + endHour + minute)
+                  }
+                  setValidation(errorMessage)
+                }}
+              ></input>
+            </div>
+          </>
+      }
+      
       <div className={style.errorMessage}>{errorMessage}</div>
     </div>
   )

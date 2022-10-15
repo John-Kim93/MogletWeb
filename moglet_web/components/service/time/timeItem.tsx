@@ -68,6 +68,18 @@ export default function TimeItem({ timeTable }) {
           <div key={breakTime.uid}>
             <h4 className={style.text}>{breakTime.element}</h4>
             <button
+              className="update"
+              onClick={() => {router.push({
+                  pathname: "/service/update/timeUpdate",
+                  query: {
+                    businessShopTimeUid : breakTime.uid,
+                    type : "브레이크 타임",
+                    time : `${breakTime.element.slice(0, 2)}${breakTime.element.slice(3, 5)}${breakTime.element.slice(8, 10)}${breakTime.element.slice(11, 13)}`,
+                    days : breakTime.element.slice(15, breakTime.element.length - 1),
+                  }
+              })}}
+              >수정</button>
+            <button
               className="delete"
               onClick={() => deleteTime.mutate(breakTime.uid)}
             >삭제</button>
@@ -84,6 +96,18 @@ export default function TimeItem({ timeTable }) {
           <div key={lastOrder.uid}>
             <h4 className={style.text}>{lastOrder.element}</h4>
             <button
+              className="update"
+              onClick={() => {router.push({
+                  pathname: "/service/update/timeUpdate",
+                  query: {
+                    businessShopTimeUid : lastOrder.uid,
+                    type : "라스트 오더",
+                    time : `${lastOrder.element.slice(0, 2)}${lastOrder.element.slice(3, 5)}`,
+                    days : lastOrder.element.slice(7, lastOrder.element.length - 1),
+                  }
+              })}}
+              >수정</button>
+            <button
               className="delete"
               onClick={() => deleteTime.mutate(lastOrder.uid)}
             >삭제</button>
@@ -99,6 +123,17 @@ export default function TimeItem({ timeTable }) {
         return (
           <div key={holiday.uid}>
             <h4 className={style.text}>{holiday.element}</h4>
+            <button
+              className="update"
+              onClick={() => {router.push({
+                  pathname: "/service/update/timeUpdate",
+                  query: {
+                    businessShopTimeUid : holiday.uid,
+                    type : "정기 휴무",
+                    days : holiday.element.slice(15, holiday.element.length - 1),
+                  }
+              })}}
+              >수정</button>
             <button
               className="delete"
               onClick={() => deleteTime.mutate(holiday.uid)}
