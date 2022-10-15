@@ -136,13 +136,13 @@ export function UpdateTimeForm({initialValues, onSubmit, onCancel } : {
               {validation
                 ? <button
                     type="submit"
-                    className="create"
+                    className="update"
                   >
                     수정
                   </button>
                 : <button
                     type="submit"
-                    className="create"
+                    className="update"
                     disabled={true}
                   >
                     수정

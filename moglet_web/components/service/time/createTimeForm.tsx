@@ -30,7 +30,7 @@ export function CreateTimeForm({ onSubmit, onCancel } : {
       {({ errors, touched, values, setFieldValue }) => {
         return (
           <Form>
-            <div id="type-group">항목을 선택해 주세요.</div>
+            <h4 id="type-group">항목</h4>
             <div role="group" aria-labelledby="type-group">
               <label>
                 <Field type="radio" name="type" value="영업 시간" />
@@ -53,7 +53,7 @@ export function CreateTimeForm({ onSubmit, onCancel } : {
             {/* {errors.name && touched.name ? (<div id={styles.errorMessage}>{errors.name}</div>) : null} */}
             {values.type == "정기 휴무"
               ? <div>
-                  <div id="weeks-group">몇째 주?</div>
+                  <h4 id="weeks-group">주간</h4>
                   <label>
                     <Field type="checkbox" name="everyWeek" />
                     매주
@@ -91,7 +91,7 @@ export function CreateTimeForm({ onSubmit, onCancel } : {
                 </div>
               : null
             }
-            <div id="days-group">무슨 요일?</div>
+            <h4 id="days-group">요일</h4>
             <label>
               <Field type="checkbox" name="everyDay"/>
               매일
@@ -137,10 +137,11 @@ export function CreateTimeForm({ onSubmit, onCancel } : {
             {values.type == "정기 휴무"
               ? null
               : <>
-                  <div id="timePicker">몇시부터 몇시?</div>
+                  <h4 id="timePicker">시간</h4>
                   <label>
                     <TimePicker
                       time={values.time}
+                      type={values.type}
                       setTime={(value :string) => setFieldValue("time", value, true)}
                       setValidation={(value :null|string) => {
                         if (value) {
@@ -151,9 +152,9 @@ export function CreateTimeForm({ onSubmit, onCancel } : {
                       }}
                     />
                   </label>
+                  <hr/>
                 </>
             }
-            <hr/>
             <div
               style={{ display: "flex", fontSize: "0.9em" }}
             >

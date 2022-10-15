@@ -123,6 +123,7 @@ export default function TimeItem({ timeTable }) {
         return (
           <div key={holiday.uid}>
             <h4 className={style.text}>{holiday.element}</h4>
+            // Todo 휴일 update initial data 어케 할지? - 애초에 받을 때 숫자까지 받을까..?
             <button
               className="update"
               onClick={() => {router.push({
