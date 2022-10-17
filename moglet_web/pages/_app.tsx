@@ -12,7 +12,14 @@ import React from "react"
 
 export default function App({ Component, pageProps} :AppProps ) {
   // Create a react query client
-  const [queryClient] = React.useState(() => new QueryClient())
+  const [queryClient] = React.useState(() => new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 30 * 60 * 1000,
+        cacheTime: 2 * 60 * 60 * 1000,
+      },
+    }
+  }))
   return (
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>

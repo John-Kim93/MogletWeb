@@ -28,7 +28,7 @@ export function UpdateTimeForm({initialValues, onSubmit, onCancel } : {
             {/* {errors.name && touched.name ? (<div id={styles.errorMessage}>{errors.name}</div>) : null} */}
             {values.type == "정기 휴무"
               ? <div>
-                  <div id="weeks-group">몇째 주?</div>
+                  <h3 id="weeks-group">주간</h3>
                   <label>
                     <Field type="checkbox" name="everyWeek" />
                     매주
@@ -66,7 +66,7 @@ export function UpdateTimeForm({initialValues, onSubmit, onCancel } : {
                 </div>
               : null
             }
-            <div id="days-group">무슨 요일?</div>
+            <h3 id="days-group">요일</h3>
             <label>
               <Field type="checkbox" name="everyDay"/>
               매일
@@ -112,19 +112,13 @@ export function UpdateTimeForm({initialValues, onSubmit, onCancel } : {
             {values.type == "정기 휴무"
               ? null
               : <>
-                  <div id="timePicker">몇시부터 몇시?</div>
+                  <h3 id="timePicker">시간</h3>
                   <label>
                     <TimePicker
                       time={values.time}
                       type={values.type}
                       setTime={(value :string) => setFieldValue("time", value, true)}
-                      setValidation={(value :null|string) => {
-                        if (value) {
-                          setValidation(true)
-                        } else {
-                          setValidation(false)
-                        }
-                      }}
+                      setValidation={(value :boolean) =>  setValidation(value)}
                     />
                   </label>
                   <hr/>

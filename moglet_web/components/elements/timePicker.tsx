@@ -12,9 +12,11 @@ export default function TimePicker({ time, type, setTime, setValidation }) {
     const regex = new RegExp(`^[0-1]{1}?[0-9]|2[0-3]`)
     if (regex.test(value)) {
       setErrorMessage(null)
+      setValidation(true)
       return true
     } else {
       setErrorMessage("잘못된 입력값입니다.")
+      setValidation(false)
       return false
     }
   }
@@ -22,9 +24,11 @@ export default function TimePicker({ time, type, setTime, setValidation }) {
     const regex = new RegExp(`^[0-5][0-9]`)
     if (regex.test(value)) {
       setErrorMessage(null)
+      setValidation(true)
       return true
     } else {
       setErrorMessage("잘못된 입력값입니다.")
+      setValidation(false)
       return false
     }
   } 
@@ -39,10 +43,10 @@ export default function TimePicker({ time, type, setTime, setValidation }) {
           onChange={(e) => {
             const hour = e.target.value
             setStartHour(hour)
-            if (hourValidation(hour)) {
+            const isValid = hourValidation(hour)
+            if (isValid) {
               setTime(hour + startMinute + endHour + endMinute)
             }
-            setValidation(errorMessage)
           }}
           >
           </input>
@@ -54,10 +58,10 @@ export default function TimePicker({ time, type, setTime, setValidation }) {
           onChange={(e) => {
             const minute = e.target.value
             setStartMinute(minute)
-            if (minuteValidation(minute)) {
+            const isValid = minuteValidation(minute)
+            if (isValid) {
               setTime(startHour + minute + endHour + endMinute)
             }
-            setValidation(errorMessage)
           }}></input>
       </div>
       {type == "라스트 오더"
@@ -72,10 +76,10 @@ export default function TimePicker({ time, type, setTime, setValidation }) {
                 onChange={(e) => { 
                   const hour = e.target.value
                   setEndHour(hour) 
-                  if (hourValidation(hour)) {
+                  const isValid = hourValidation(hour) 
+                  if (isValid) {
                     setTime(startHour + startMinute + hour + endMinute)
                   }
-                  setValidation(errorMessage)
                 }}
               ></input>
               <span>:</span>
@@ -86,16 +90,15 @@ export default function TimePicker({ time, type, setTime, setValidation }) {
                 onChange={(e) => {
                   const minute = e.target.value
                   setEndMinute(minute) 
-                  if (minuteValidation(minute)) {
+                  const isValid = minuteValidation(minute)
+                  if (isValid) {
                     setTime(startHour + startMinute + endHour + minute)
                   }
-                  setValidation(errorMessage)
                 }}
               ></input>
             </div>
           </>
       }
-      
       <div className={style.errorMessage}>{errorMessage}</div>
     </div>
   )

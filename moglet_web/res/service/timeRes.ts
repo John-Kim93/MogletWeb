@@ -1,7 +1,10 @@
-
 export interface TimeElement {
   uid :number,
   element :string,
+}
+export interface HolidayElement {
+  uid : number,
+  
 }
 
 export interface TimeTable {

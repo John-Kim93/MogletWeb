@@ -30,6 +30,7 @@ export default function MenuCreate() {
                   timer: 2000
                 })
                 queryClient.invalidateQueries('get_restaurantInfo')
+                router.back()
               },
               onError: (error) => {
                 console.log('onError' + error);

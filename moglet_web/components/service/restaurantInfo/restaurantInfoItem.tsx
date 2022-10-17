@@ -11,6 +11,7 @@ export default function RestaurantInfoItem({ restaurantInfo }) {
           src={restaurantInfo.shopImage}
           width={375}
           height={234}
+          layout="responsive"
           unoptimized
         ></Image>
       </div>

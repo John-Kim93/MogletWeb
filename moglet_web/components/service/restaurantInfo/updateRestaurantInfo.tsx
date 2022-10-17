@@ -20,7 +20,7 @@ export default function UpdateRestaurantInfo({ restaurantInfo }) {
               Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: '정보가 수정되었습니다!g',
+                title: '정보가 수정되었습니다!',
                 showConfirmButton: false,
                 timer: 2000
               })

@@ -22,7 +22,6 @@ export function CreateTimeForm({ onSubmit, onCancel } : {
         values :TimeCreateReqVal,
         { setSubmitting }
       ) => {
-        // alert(JSON.stringify(values))
         onSubmit(values)
         setSubmitting(true)
       }}
@@ -143,13 +142,7 @@ export function CreateTimeForm({ onSubmit, onCancel } : {
                       time={values.time}
                       type={values.type}
                       setTime={(value :string) => setFieldValue("time", value, true)}
-                      setValidation={(value :null|string) => {
-                        if (value) {
-                          setValidation(true)
-                        } else {
-                          setValidation(false)
-                        }
-                      }}
+                      setValidation={(value :boolean) => setValidation(value)}
                     />
                   </label>
                   <hr/>
@@ -173,7 +166,6 @@ export function CreateTimeForm({ onSubmit, onCancel } : {
                     생성
                   </button>
               }
-              
               <button
                 type="button"
                 onClick={onCancel}

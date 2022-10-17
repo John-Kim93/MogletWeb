@@ -84,6 +84,7 @@ export default function UpdateRestaurantInfoForm({ initialValues, onSubmit, onCa
                   src={shopImageSrc}
                   width={375}
                   height={234}
+                  layout="responsive"
                   unoptimized
                 ></Image>
                 <div className="filebox">
