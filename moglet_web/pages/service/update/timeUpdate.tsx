@@ -13,15 +13,16 @@ export default function TimeUpdate() {
   const router = useRouter()
   const data = router.query
   const days = convertStringArrayToBinaryCodeArray(String(data.days).split(', '), "days")
+  const weeks = data?.weeks ? convertStringArrayToBinaryCodeArray(String(data.weeks).split(', '), "weeks") : []
   const queryClient = useQueryClient()
   const initialValues = {
     type: String(data.type),
     time: String(data.time),
     businessShopTimeUid : String(data.businessShopTimeUid),
-    everyWeek: true,
+    everyWeek: data.weeks == "매주" ? true : false,
     everyDay: data.days == "매일" ? true : false,
-    weeks: [],
-    days
+    weeks,
+    days,
   }
   const updateTimeMutation = useMutation((req :TimeUpdateReq) => apiPutTime(req))
   return (

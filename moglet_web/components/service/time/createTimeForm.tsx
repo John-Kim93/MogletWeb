@@ -12,8 +12,8 @@ export function CreateTimeForm({ onSubmit, onCancel } : {
     <Formik
       initialValues={{
         type: "영업 시간",
-        everyWeek: true,
-        everyDay: true,
+        everyWeek: false,
+        everyDay: false,
         weeks: [],
         days: [],
         time: "00002400"
@@ -91,46 +91,81 @@ export function CreateTimeForm({ onSubmit, onCancel } : {
               : null
             }
             <h4 id="days-group">요일</h4>
-            <label>
-              <Field type="checkbox" name="everyDay"/>
-              매일
-            </label>
-            {values.everyDay
-              ? (
-                null
-              )
-              : (
-                <div role="group" aria-labelledby="days-group">
-                  <label>
-                    <Field type="checkbox" name="days" value="1" />
-                    월요일
-                  </label>
-                  <label>
-                    <Field type="checkbox" name="days" value="2" />
-                    화요일
-                  </label>
-                  <label>
-                    <Field type="checkbox" name="days" value="4" />
-                    수요일
-                  </label>
-                  <label>
-                    <Field type="checkbox" name="days" value="8" />
-                    목요일
-                  </label>
-                  <label>
-                    <Field type="checkbox" name="days" value="16" />
-                    금요일
-                  </label>
-                  <label>
-                    <Field type="checkbox" name="days" value="32" />
-                    토요일
-                  </label>
-                  <label>
-                    <Field type="checkbox" name="days" value="64" />
-                    일요일
-                  </label>
-                </div>
-              )
+            {values.type == "정기 휴무"
+            ? (
+              <div role="group" aria-labelledby="days-group">
+                <label>
+                  <Field type="checkbox" name="days" value="1" />
+                  월요일
+                </label>
+                <label>
+                  <Field type="checkbox" name="days" value="2" />
+                  화요일
+                </label>
+                <label>
+                  <Field type="checkbox" name="days" value="4" />
+                  수요일
+                </label>
+                <label>
+                  <Field type="checkbox" name="days" value="8" />
+                  목요일
+                </label>
+                <label>
+                  <Field type="checkbox" name="days" value="16" />
+                  금요일
+                </label>
+                <label>
+                  <Field type="checkbox" name="days" value="32" />
+                  토요일
+                </label>
+                <label>
+                  <Field type="checkbox" name="days" value="64" />
+                  일요일
+                </label>
+              </div>
+            )
+            : (<>
+              <label>
+                <Field type="checkbox" name="everyDay"/>
+                매일
+              </label>
+              {values.everyDay
+                ? (
+                  null
+                )
+                : (
+                  <div role="group" aria-labelledby="days-group">
+                    <label>
+                      <Field type="checkbox" name="days" value="1" />
+                      월요일
+                    </label>
+                    <label>
+                      <Field type="checkbox" name="days" value="2" />
+                      화요일
+                    </label>
+                    <label>
+                      <Field type="checkbox" name="days" value="4" />
+                      수요일
+                    </label>
+                    <label>
+                      <Field type="checkbox" name="days" value="8" />
+                      목요일
+                    </label>
+                    <label>
+                      <Field type="checkbox" name="days" value="16" />
+                      금요일
+                    </label>
+                    <label>
+                      <Field type="checkbox" name="days" value="32" />
+                      토요일
+                    </label>
+                    <label>
+                      <Field type="checkbox" name="days" value="64" />
+                      일요일
+                    </label>
+                  </div>
+                )}
+              </>)
             }
             <hr/>
             {values.type == "정기 휴무"

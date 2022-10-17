@@ -15,7 +15,7 @@ export default function App({ Component, pageProps} :AppProps ) {
   const [queryClient] = React.useState(() => new QueryClient({
     defaultOptions: {
       queries: {
-        staleTime: 30 * 60 * 1000,
+        // staleTime: 30 * 60 * 1000,
         cacheTime: 2 * 60 * 60 * 1000,
       },
     }

@@ -1,4 +1,4 @@
-import { TimeElement } from "../../../res/service/timeRes"
+import { HolidayElement, TimeElement } from "../../../res/service/timeRes"
 import { useRouter } from "next/router"
 import style from "../../../styles/service/Time.module.css"
 import { useMutation, useQueryClient } from "react-query"
@@ -119,7 +119,7 @@ export default function TimeItem({ timeTable }) {
       <hr/>
       <h3>휴일</h3>
       {timeTable.HOLIDAY[0]
-      ? timeTable.HOLIDAY.map((holiday :TimeElement) => {
+      ? timeTable.HOLIDAY.map((holiday :HolidayElement) => {
         return (
           <div key={holiday.uid}>
             <h4 className={style.text}>{holiday.element}</h4>
@@ -130,7 +130,8 @@ export default function TimeItem({ timeTable }) {
                   query: {
                     businessShopTimeUid : holiday.uid,
                     type : "정기 휴무",
-                    days : holiday.element.slice(15, holiday.element.length - 1),
+                    days : holiday.days,
+                    weeks : holiday.weeks,
                   }
               })}}
               >수정</button>

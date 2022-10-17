@@ -14,11 +14,6 @@ export interface StringDaysAndWeeks {
   wordWeeks :string
 }
 
-export interface NumberDaysAndWeeks {
-  days :number,
-  weeks :number
-}
-
 export function calculateBinaryCodeToString(days :number, weeks :number) :StringDaysAndWeeks{
   let wordDays = ""
   const koreanDays = ['월', '화', '수', '목', '금', '토', '일']
@@ -35,7 +30,9 @@ export function calculateBinaryCodeToString(days :number, weeks :number) :String
   }
   let wordWeeks = ""
   const koreanWeeks = ['첫째 주', '둘째 주', '셋째 주', '넷째 주', '다섯째 주']
-  if (weeks) {
+  if (weeks == 0) {
+    wordWeeks = "매주"
+  } else {
     for (let i = 0; i < 5; i++) {
       const binaryCheck = 2**i
       if (weeks & binaryCheck) {
@@ -50,23 +47,17 @@ export function calculateBinaryCodeToString(days :number, weeks :number) :String
   }
 }
 
-export function sumBinaryCode(daysList :string[], weeksList :string[]) :NumberDaysAndWeeks{
-  let days = 0
-  if (daysList[0]) {
-    daysList.forEach((day) => {
-      days += parseInt(day)
+export function sumBinaryCode(stringCodeList :string[]) :number{
+  let result = 0
+  console.log("HERE5", stringCodeList)
+  if (stringCodeList[0]) {
+    stringCodeList.forEach((stringCode) => {
+      console.log("here444")
+      result += parseInt(stringCode)
     })
   }
-  let weeks = 0
-  if (weeksList[0]) {
-    weeksList.forEach((week) => {
-      weeks += parseInt(week)
-    })
-  }
-  return {
-    days,
-    weeks,
-  }
+  console.log("here2", result)
+  return result
 }
 
 export function convertStringArrayToBinaryCodeArray(data :string[], type :string) :string[] {
@@ -76,6 +67,7 @@ export function convertStringArrayToBinaryCodeArray(data :string[], type :string
         return []
       }
       const dayToNum = {
+        "매일" : '0',
         "월" : '1',
         "화" : '2',
         "수" : '4',
@@ -85,17 +77,18 @@ export function convertStringArrayToBinaryCodeArray(data :string[], type :string
         "일" : '64',
       }
       return data.map((day) => dayToNum[day])
-      case "weeks" :
-        if (!data[0]){
-          return []
-        }
-        const weekToNum = {
-          "첫째 주" : '1',
-          "둘째 주" : '2',
-          "셋째 주" : '4',
-          "넷째 주" : '8',
-          "다섯째 주" : '16',
-        }
-        return data.map((week) => weekToNum[week])
+    case "weeks" :
+      if (!data[0]){
+        return []
+      }
+      const weekToNum = {
+        "매주" : '0',
+        "첫째 주" : '1',
+        "둘째 주" : '2',
+        "셋째 주" : '4',
+        "넷째 주" : '8',
+        "다섯째 주" : '16',
+      }
+      return data.map((week) => weekToNum[week])
   }
 }
