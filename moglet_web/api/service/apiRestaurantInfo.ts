@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { RestaurantUpdateReq } from '../../req/service/restaurantInfoReq';
 import { setToken } from '../apiUtils';
+import { RestaurantUpdateReq } from '../../req/service/restaurantInfoReq';
 
 export const apiGetRestaurantInfo = () =>
 	axios({

@@ -49,14 +49,11 @@ export function calculateBinaryCodeToString(days :number, weeks :number) :String
 
 export function sumBinaryCode(stringCodeList :string[]) :number{
   let result = 0
-  console.log("HERE5", stringCodeList)
   if (stringCodeList[0]) {
     stringCodeList.forEach((stringCode) => {
-      console.log("here444")
       result += parseInt(stringCode)
     })
   }
-  console.log("here2", result)
   return result
 }
 
