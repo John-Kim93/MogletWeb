@@ -1,6 +1,17 @@
-export default function ReviewItems({ reviewData }) {
-  console.log(reviewData)
-  return (
-    <>review</>
-  )
+import ReviewItem from "./reviewItem"
+import style from "../../../styles/service/Review.module.css"
+
+export default function ReviewItems({reviewPage}) {
+    // const testInfinityScrollData = () => {
+    //     const dataSet = []
+    //     for (let i = 0; i++; i < 100) {
+    //         dataSet.push({id: i})
+    //     }
+    // }
+    console.log(reviewPage)
+    return (<div className={style.container}>
+    {reviewPage.data.item.map(review => {
+      return <ReviewItem reviewRes={review} />
+    })}
+    </div>)
 }
