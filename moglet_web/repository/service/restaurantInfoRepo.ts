@@ -6,6 +6,7 @@ const IMAGE_BASE_URL = process.env.S3_URL
 export function convertRestaurantRes(values :RestaurantRes) :RestaurantVal {
   if (values) {
     const shopImage :string = `${IMAGE_BASE_URL}${values.shop_filename}`
+    
     const restaurantInfo :RestaurantVal = {
       shopImage :shopImage,
       name :values.name,

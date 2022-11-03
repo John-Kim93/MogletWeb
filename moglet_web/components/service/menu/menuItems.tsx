@@ -25,8 +25,8 @@ export default function MenuItems({ menuRes }) :JSX.Element {
 
         <thead>
           <tr>
-            <th>메뉴 소개</th>
             <th>메뉴명</th>
+            <th>메뉴 소개</th>
             <th>가격</th>
             <th>메인 메뉴</th>
             <th>삭제 및 수정</th>

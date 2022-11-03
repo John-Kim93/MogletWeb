@@ -5,17 +5,18 @@ import {apiGetReview} from "../../api/service/apiReview";
 import LoadingPage from "../../components/loading";
 import ErrorPage from "../../components/error";
 import ReviewItems from "../../components/service/review/reviewItems";
+import InfiniteScroll from "react-infinite-scroll-component";
+import style from "../../styles/service/Review.module.css";
 
 export default function Review() {
     const getReview = () => {
-        const res = useInfiniteQuery(['get_review'], ({
+        const res = useInfiniteQuery(['get_reviews'], ({
             pageParam = 0
         }) => apiGetReview({offset: pageParam}), {
             getNextPageParam: (lastPage, allPages) => {
                 return lastPage.data.item.length !== 0 && allPages.length + 1
             }
         })
-        // const review = convert
         if (res.isLoading) {
             return (
                 <Layout>
@@ -43,19 +44,21 @@ export default function Review() {
                 <Layout>
                     <Header/>
                     <div className="serviceMainContainer">
-                        {/* <button
-                            onClick={() => res.fetchNextPage()}>test</button> */
-                        }
+                        <h3>고객님께서 작성해주신 소중한 리뷰...♥</h3>
+                        <hr></hr>
+                        <InfiniteScroll
+                            dataLength={res.data.pages.length}
+                            next={() => res.fetchNextPage()}
+                            hasMore={res.hasNextPage}
+                            loader={<h4>Loading...</h4>}
+                        >
                         {
-                            res
-                                .data
-                                .pages
-                                .map(page => {
-                                    return <> < ReviewItems reviewPage = {
-                                        page
-                                    } /> </>
+                            res.data.pages
+                                .map((page, idx) => {
+                                    return <> < ReviewItems key={idx} reviewPage={page} /> </>
                                 })
                         }
+                        </InfiniteScroll>
                     </div>
                 </Layout>
             )

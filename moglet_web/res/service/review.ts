@@ -6,5 +6,8 @@ export interface ReviewCard {
   isMain : boolean,
   countView : number,
   content : string,
-  reviewRating : number,
+  visitSatisfaction : string,
+  nickname: string,
+  profileFilename: string,
+  createdTime: string,
 }
