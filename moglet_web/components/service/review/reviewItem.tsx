@@ -1,13 +1,21 @@
 import Image from "next/image"
+import { useRouter } from "next/router"
 import {convertReviewRes} from "../../../repository/service/reviewRepo"
 import style from "../../../styles/service/Review.module.css"
 
 export default function ReviewItem({reviewRes}) {
+    const router = useRouter()
+    
     const review = convertReviewRes(reviewRes)
+    
     return (
-      <> < div className = {
-        style.box
-    }>
+      <div
+        className = {style.box}
+        onClick={() => {
+          localStorage.setItem('reviewDetail', JSON.stringify(review))
+          router.push(`/service/review/${review.uid}`, `/service/review/detail`)
+        }}
+      >
       <Image
         className={style.thumbnail}
         src={review.thumbnail}
@@ -38,5 +46,5 @@ export default function ReviewItem({reviewRes}) {
       <p>{review.createdTime}</p>
 
     </div>
-</>)
+  )
 }

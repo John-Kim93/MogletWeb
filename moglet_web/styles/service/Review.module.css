@@ -29,6 +29,7 @@
 
 .box:hover {
   width: 220px;
+  cursor: pointer;
 }
 
 .box p {
