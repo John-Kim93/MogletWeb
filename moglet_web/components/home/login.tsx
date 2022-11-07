@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import styles from '../../styles/home.module.css';
+import styles from '../../styles/Home.module.css';
 import * as React from 'react';
 import Image from 'next/image';
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik';
