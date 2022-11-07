@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { useRouter } from "next/router"
 import {convertReviewRes} from "../../../repository/service/reviewRepo"
+import LocalStorage from "../../../store/LocalStorage"
 import style from "../../../styles/service/Review.module.css"
 
 export default function ReviewItem({reviewRes}) {
@@ -12,7 +13,7 @@ export default function ReviewItem({reviewRes}) {
       <div
         className = {style.box}
         onClick={() => {
-          localStorage.setItem('reviewDetail', JSON.stringify(review))
+          LocalStorage.setItem('reviewDetail', JSON.stringify(review))
           router.push(`/service/review/${review.uid}`, `/service/review/detail`)
         }}
       >

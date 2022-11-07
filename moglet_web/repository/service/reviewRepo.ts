@@ -2,8 +2,8 @@ import {ReviewCard} from "../../res/service/review"
 import { parseISO, format } from 'date-fns'
 
 
-const IMAGE_CONVERT_URL = process.env.MEDIA_CONVERTER_URL
-const IMAGE_BASE_URL = process.env.S3_URL
+const IMAGE_CONVERT_URL = process.env.CONVERT_DATA
+const IMAGE_BASE_URL = process.env.ORIGINAL_DATA
 
 export function convertReviewRes(reviewRes): ReviewCard {
     let visitSatisfaction = ""

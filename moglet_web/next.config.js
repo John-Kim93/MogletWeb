@@ -3,18 +3,21 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [process.env.IMAGE_DOMAIN, process.env.MEDIA_CONVERTER_DOMAIN],
+    domains: [process.env.ORIGINAL_DATA, process.env.CONVERT_DATA]
   },
+  // video: {
+  //   domains: [process.env.CONVERT_DATA],
+  // },
   swcMinify: true,
   env: {
-    S3_URL : process.env.S3_URL,
-    MEDIA_CONVERTER_URL : process.env.MEDIA_CONVERTER_URL
+    ORIGINAL_DATA : `https://${process.env.ORIGINAL_DATA}`,
+    CONVERT_DATA : `https://${process.env.CONVERT_DATA}`,
   },
   async rewrites() {
     return [
       {
         source: "/api/:path*",
-        destination: process.env.API_URL,
+        destination: process.env.API,
       },
     ]
   },

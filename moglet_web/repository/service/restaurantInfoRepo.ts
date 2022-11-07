@@ -1,7 +1,7 @@
 import { RestaurantUpdateReq, RestaurantUpdateReqVal } from '../../req/service/restaurantInfoReq';
 import { RestaurantRes, RestaurantInit, RestaurantVal } from '../../res/service/restaurantInfoRes';
 
-const IMAGE_BASE_URL = process.env.S3_URL
+const IMAGE_BASE_URL = process.env.ORIGINAL_DATA
 
 export function convertRestaurantRes(values :RestaurantRes) :RestaurantVal {
   if (values) {
