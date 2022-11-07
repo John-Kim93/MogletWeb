@@ -3,7 +3,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [process.env.ORIGINAL_DATA process.env.CONVERT_DATA]
+    domains: [process.env.ORIGINAL_DATA, process.env.CONVERT_DATA]
   },
   // video: {
   //   domains: [process.env.CONVERT_DATA],
