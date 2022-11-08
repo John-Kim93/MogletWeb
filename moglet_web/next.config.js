@@ -14,7 +14,7 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: `http://${process.env.API}api/:path*`,
+        destination: process.env.API,
       },
       {
         source: "/video/:filename*",
