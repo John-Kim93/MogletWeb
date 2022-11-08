@@ -5,40 +5,23 @@ const nextConfig = {
   images: {
     domains: [process.env.ORIGINAL_DATA, process.env.CONVERT_DATA]
   },
-  // video: {
-  //   domains: [process.env.CONVERT_DATA],
-  // },
   swcMinify: true,
   env: {
     ORIGINAL_DATA : `https://${process.env.ORIGINAL_DATA}`,
     CONVERT_DATA : `https://${process.env.CONVERT_DATA}`,
   },
   async rewrites() {
-    return process.env.NODE_ENV === "development"
-      ? [
-        {
-          source: "/api/:path*",
-          destination: `http://${process.env.API}api/:path*`,
-        },
-        {
-          source: "/video/:filename*",
-          destination: `https://${process.env.CONVERT_DATA}:filename*`,
-        }
-        ]
-      : [];
+    return [
+      {
+        source: "/api/:path*",
+        destination: `http://${process.env.API}api/:path*`,
+      },
+      {
+        source: "/video/:filename*",
+        destination: `https://${process.env.CONVERT_DATA}:filename*`,
+      }
+    ]
   },
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: "/api/:path*",
-  //       destination: `http://${process.env.API}api/:path*`,
-  //     },
-  //     {
-  //       source: "/video/:filename*",
-  //       destination: `https://${process.env.CONVERT_DATA}:filename*`,
-  //     }
-  //   ]
-  // },
 }
 
 module.exports = nextConfig
