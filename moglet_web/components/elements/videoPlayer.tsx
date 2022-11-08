@@ -1,43 +1,44 @@
-import React from 'react'
-import videojs from 'video.js';
-import 'video.js/dist/video-js.css';
+import { useEffect, useRef } from 'react'
+import Hls from 'hls.js'
+import Player from 'plyr'
+import 'plyr/dist/plyr.css'
 
-export default function VideoPlayer(props) {
-  const videoRef = React.useRef(null);
-  const playerRef = React.useRef(null);
-  const {options, onReady} = props;
+export default function VideoPlayer({ videoUrl }) {
+  const src = `/video/${videoUrl}`
+  console.log(src, "<<<<<")
+  const videoRef = useRef(null)
 
-  React.useEffect(() => {
-    // Make sure Video.js player is only initialized once
-    if (!playerRef.current) {
-      const videoElement = videoRef.current;
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
 
-      if (!videoElement) return;
-
-      const player = playerRef.current = videojs(videoElement, options, () => {
-        videojs.log('player is ready');
-        onReady && onReady(player);
-      });
-    // You could update an existing player in the `else` block here
-    // on prop change, for example:
+    video.controls = true
+    const defaultOptions = {};
+    if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      // This will run in safari, where HLS is supported natively
+      video.src = src
+    } else if (Hls.isSupported()) {
+      // This will run in all other modern browsers
+      const hls = new Hls()
+      hls.loadSource(src)
+      const player = new Player(video, defaultOptions); 
+      hls.attachMedia(video)
+    } else {
+      console.error(
+        'This is an old browser that does not support MSE https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API'
+      )
     }
-  }, [options, videoRef]);
-
-  // Dispose the Video.js player when the functional component unmounts
-  React.useEffect(() => {
-    const player = playerRef.current;
-
-    return () => {
-      if (player) {
-        player.dispose();
-        playerRef.current = null;
-      }
-    };
-  }, [playerRef]);
+  }, [src, videoRef])
 
   return (
-    <div data-vjs-player>
-      <video ref={videoRef} className='video-js vjs-big-play-centered' />
-    </div>
-  );
+    <>
+      <video ref={videoRef} crossOrigin="anonymous"/>
+      <style jsx>{`
+        video {
+          max-width: 100%;
+          
+        }
+      `}</style>
+    </>
+  )
 }

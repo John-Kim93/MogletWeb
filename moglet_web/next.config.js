@@ -17,8 +17,12 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: process.env.API,
+        destination: `${process.env.API}api/:path*`,
       },
+      {
+        source: "/video/:filename*",
+        destination: `https://${process.env.CONVERT_DATA}:filename*`,
+      }
     ]
   },
 }
