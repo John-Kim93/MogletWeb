@@ -14,17 +14,31 @@ const nextConfig = {
     CONVERT_DATA : `https://${process.env.CONVERT_DATA}`,
   },
   async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: `${process.env.API}api/:path*`,
-      },
-      {
-        source: "/video/:filename*",
-        destination: `https://${process.env.CONVERT_DATA}:filename*`,
-      }
-    ]
+    return process.env.NODE_ENV === "development"
+      ? [
+        {
+          source: "/api/:path*",
+          destination: `http://${process.env.API}api/:path*`,
+        },
+        {
+          source: "/video/:filename*",
+          destination: `https://${process.env.CONVERT_DATA}:filename*`,
+        }
+        ]
+      : [];
   },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: "/api/:path*",
+  //       destination: `http://${process.env.API}api/:path*`,
+  //     },
+  //     {
+  //       source: "/video/:filename*",
+  //       destination: `https://${process.env.CONVERT_DATA}:filename*`,
+  //     }
+  //   ]
+  // },
 }
 
 module.exports = nextConfig
