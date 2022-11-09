@@ -77,6 +77,11 @@ table .textAlignCenter {
   justify-content: flex-start;
 }
 
+.flexBoxEnd {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .gridContainer {
   display: grid;
   grid-template-columns: auto auto;

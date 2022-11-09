@@ -112,9 +112,11 @@
 
 .textWrapper {
   position: relative;
-  display: inline;
+  display: inline-block;
+  flex-direction: column;
   margin-left: 2.5rem;
   vertical-align: top;
+  min-width: 30rem;
 }
 
 .textBox {
