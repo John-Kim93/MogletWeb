@@ -17,8 +17,12 @@ const nextConfig = {
         destination: process.env.API,
       },
       {
-        source: "/video/:filename*",
+        source: "/convert/:filename*",
         destination: `https://${process.env.CONVERT_DATA}:filename*`,
+      },
+      {
+        source: "/original/:filename*",
+        destination: `https://${process.env.ORIGINAL_DATA}:filename*`,
       }
     ]
   },

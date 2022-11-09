@@ -3,8 +3,8 @@ import Hls from 'hls.js'
 import Player from 'plyr'
 import 'plyr/dist/plyr.css'
 
-export default function VideoPlayer({ videoUrl }) {
-  const src = `/video/${videoUrl}`
+export default function VideoPlayer({ videoUrl, thumbnailUrl }) {
+  const src = `/convert/${videoUrl}`
   const videoRef = useRef(null)
 
   useEffect(() => {
@@ -12,7 +12,13 @@ export default function VideoPlayer({ videoUrl }) {
     if (!video) return
 
     video.controls = true
-    const defaultOptions = {};
+    // const defaultOptions={}
+    const defaultOptions = {
+      previewThumbnails: { 
+        enabled: true, 
+        src: thumbnailUrl,
+      }
+    }
     if (video.canPlayType('application/vnd.apple.mpegurl')) {
       // This will run in safari, where HLS is supported natively
       video.src = src
@@ -20,7 +26,7 @@ export default function VideoPlayer({ videoUrl }) {
       // This will run in all other modern browsers
       const hls = new Hls()
       hls.loadSource(src)
-      const player = new Player(video, defaultOptions); 
+      const player = new Player(video, defaultOptions);
       hls.attachMedia(video)
     } else {
       console.error(
@@ -31,7 +37,7 @@ export default function VideoPlayer({ videoUrl }) {
 
   return (
     <>
-      <video ref={videoRef} crossOrigin="anonymous"/>
+      <video ref={videoRef} crossOrigin="anonymous" />
       <style jsx>{`
         video {
           max-width: 100%;

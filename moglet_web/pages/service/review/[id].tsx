@@ -9,6 +9,7 @@ import Image from "next/image";
 
 export default function ReviewDetail() {
   const [videoUrl, setVideoUrl] = useState('')
+  const [thumbnailUrl, setThumbnailUrl] = useState('')
 
   const reviewJSON = LocalStorage.getItem('reviewDetail')
   const review = JSON.parse(reviewJSON)
@@ -17,6 +18,7 @@ export default function ReviewDetail() {
     if (review) {
       console.log('rerender')
       setVideoUrl(review?.filename)
+      setThumbnailUrl(review?.thumbnail)
     }
   }, [])
 
@@ -25,7 +27,7 @@ export default function ReviewDetail() {
       <Header/>
       <div className="serviceMainContainer">
         <div className="flexBoxStart">
-          {videoUrl !== '' && <div className={style.videoBox}><VideoPlayer videoUrl={videoUrl}/></div>}
+          {videoUrl !== '' && <div className={style.videoBox}><VideoPlayer videoUrl={videoUrl} thumbnailUrl={thumbnailUrl}/></div>}
           <div className={style.textWrapper}>
           <div className="flexBoxStart">
             <h3>작성자 : {review?.nickname}</h3>

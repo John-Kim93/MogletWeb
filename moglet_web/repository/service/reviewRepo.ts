@@ -1,10 +1,6 @@
 import {ReviewCard} from "../../res/service/review"
 import { parseISO, format } from 'date-fns'
 
-
-const IMAGE_CONVERT_URL = process.env.CONVERT_DATA
-const IMAGE_BASE_URL = process.env.ORIGINAL_DATA
-
 export function convertReviewRes(reviewRes): ReviewCard {
     let visitSatisfaction = ""
     switch (reviewRes.visit_satisfaction) {
@@ -28,7 +24,7 @@ export function convertReviewRes(reviewRes): ReviewCard {
             // }
     const review = {
         uid: reviewRes.uid,
-        thumbnail: `${IMAGE_CONVERT_URL}${reviewRes.video_thumbnail}`,
+        thumbnail: `/convert/${reviewRes.video_thumbnail}`,
         filename: `${reviewRes.filename}`,
         videoType: reviewRes.video_type,
         isMain: reviewRes.is_main,
@@ -36,7 +32,7 @@ export function convertReviewRes(reviewRes): ReviewCard {
         content: reviewRes.short_content,
         visitSatisfaction: visitSatisfaction,
         nickname: reviewRes.nickname,
-        profileFilename: `${IMAGE_BASE_URL}${reviewRes.profile_filename}`,
+        profileFilename: `/original/${reviewRes.profile_filename}`,
         createdTime: createdTime(),
     }
     return review

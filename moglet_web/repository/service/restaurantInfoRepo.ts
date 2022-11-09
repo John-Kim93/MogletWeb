@@ -1,11 +1,9 @@
 import { RestaurantUpdateReq, RestaurantUpdateReqVal } from '../../req/service/restaurantInfoReq';
 import { RestaurantRes, RestaurantInit, RestaurantVal } from '../../res/service/restaurantInfoRes';
 
-const IMAGE_BASE_URL = process.env.ORIGINAL_DATA
-
 export function convertRestaurantRes(values :RestaurantRes) :RestaurantVal {
   if (values) {
-    const shopImage :string = `${IMAGE_BASE_URL}${values.shop_filename}`
+    const shopImage :string = `/original/${values.shop_filename}`
     
     const restaurantInfo :RestaurantVal = {
       shopImage :shopImage,
@@ -30,7 +28,7 @@ export function convertRestaurantRes(values :RestaurantRes) :RestaurantVal {
 
 export function convertRestaurantInit(values :RestaurantRes) {
   if (values) {
-    const shopImage :string = `${IMAGE_BASE_URL}${values.shop_filename}`
+    const shopImage :string = `/original/${values.shop_filename}`
     const restaurantInfo :RestaurantInit = {
       shopImage :shopImage,
       name :values.name,
