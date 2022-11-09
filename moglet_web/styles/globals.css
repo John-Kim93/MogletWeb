@@ -62,9 +62,19 @@ table .textAlignCenter {
   word-wrap: break-word;
   text-align: center;
 }
-.contentCenter {
+.flexBoxCenter {
   display: flex;
   justify-content: center;
+}
+
+.flexBoxSpaceBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flexBoxStart {
+  display: flex;
+  justify-content: start;
 }
 
 .gridContainer {
@@ -111,43 +121,6 @@ table .textAlignCenter {
   cursor: pointer;
   height: 40px;
   margin-left: 10px;
-}
-
-/* 드롭다운 */
-.dropdown{
-  font-weight: bold;
-  position : relative;
-  display : inline-block;
-  border : solid;
-  border-radius : 5px;
-  height : 38px;
-  width : 120px;
-  padding : 5px;
-  margin-right : 50px;
-  cursor : pointer;
-}
-
-.dropdown-content{
-  display : none;
-  position : absolute;
-  z-index : 1;
-  background : white;
-  font-size: 14px;
-  width: 100px;
-  margin-top: 10px;
-  border: solid 1px;
-  border-bottom: none;
-}
-
-.dropdown-content p{
-  display : block;
-  padding: 8px 0px 4px 5px;
-  margin: auto;
-  border-bottom: solid 1px;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
 }
 
 /* 버튼 UI */

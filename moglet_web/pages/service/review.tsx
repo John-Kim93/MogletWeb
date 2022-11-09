@@ -55,7 +55,7 @@ export default function Review() {
                         {
                             res.data.pages
                                 .map(page => {
-                                    return <> < ReviewItems key={page.data.item[0].uid} reviewPage={page} /> </>
+                                    return <> < ReviewItems key={page?.data?.item[0]?.uid} reviewPage={page} /> </>
                                 })
                         }
                         </InfiniteScroll>

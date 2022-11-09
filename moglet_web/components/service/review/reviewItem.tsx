@@ -25,7 +25,7 @@ export default function ReviewItem({reviewRes}) {
         layout="responsive"
         unoptimized
       ></Image>
-      <div className={style.flexBox}>
+      <div className="flexBoxSpaceBetween">
         <div>
           <h6>유저 이름</h6>
           <p>{review.nickname}</p>
@@ -36,7 +36,7 @@ export default function ReviewItem({reviewRes}) {
             width={50}
             height={50}
             unoptimized
-          ></Image>
+          />
         </div>
       </div>
       <h6>한줄평</h6>

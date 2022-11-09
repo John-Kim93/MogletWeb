@@ -5,7 +5,6 @@ import 'plyr/dist/plyr.css'
 
 export default function VideoPlayer({ videoUrl }) {
   const src = `/video/${videoUrl}`
-  console.log(src, "<<<<<")
   const videoRef = useRef(null)
 
   useEffect(() => {

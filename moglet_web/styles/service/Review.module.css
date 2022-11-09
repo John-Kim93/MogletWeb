@@ -85,17 +85,39 @@
   overflow: hidden;
 }
 
-.flexBox {
-  display: flex;
-  justify-content: space-between;
-}
-
 .imageBox {
   height: 20px;
   padding: 8px 5px 0px 0px;
+  margin-left: 10px;
 }
 
 .videoBox {
+  position: relative;
+  display: inline-block;
   width: 20rem;
   height: auto;
+  margin-left: 1rem;
+}
+
+.videoBox::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -1.5rem;
+  width: 4px;
+  height: 100%;
+  background-color: #DCDCDC50;
+}
+
+.textWrapper {
+  position: relative;
+  display: inline;
+  margin-left: 2.5rem;
+  vertical-align: top;
+}
+
+.textBox {
+  display: flex;
+  flex-wrap: wrap;
 }

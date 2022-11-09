@@ -9,7 +9,7 @@ export default function ReviewItems({ reviewPage }) {
     //     }
     // }
     return (<div className={style.container}>
-    {reviewPage.data.item.map(review => {
+    {reviewPage?.data?.item?.map(review => {
       return <div className={style.card}><ReviewItem key={review.uid} reviewRes={review}/></div>
     })}
     </div>)
