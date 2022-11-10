@@ -16,10 +16,8 @@ export default function ReviewDetail() {
 
   const reviewJSON = LocalStorage.getItem('reviewDetail')
   const review = JSON.parse(reviewJSON)
-  console.log(review)
   useEffect(() => {
     if (review) {
-      console.log('rerender')
       setVideoUrl(review?.filename)
       setThumbnailUrl(review?.thumbnail)
     }

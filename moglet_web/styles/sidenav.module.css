@@ -6,7 +6,7 @@
   width: 225px;
   height: 100vh;
   transition: all 0.5s ease;
-  background-color: var(--g-color-dark-bg);
+  background-color: var(--g-color-main-dark);
 }
 
 .bar ul {
@@ -29,11 +29,11 @@
 
 .bar ul li a span {
   margin-left: 4px;
-  color: white;
+  color: var(--g-color-main-white);
 }
 
 .bar ul li a:hover {
-  color: white;
+  color: var(--g-color-main-white);
 }
 
 .logo {
@@ -43,7 +43,7 @@
   padding: 15px 10px;
 }
 .logo h2 {
-  color: white;
+  color: var(--g-color-main-white);
   font-size: 18px;
   margin-left: 12px;
 }

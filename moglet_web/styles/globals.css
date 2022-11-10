@@ -1,3 +1,19 @@
+:root {
+  --g-color-main-black: #000000;
+  --g-color-main-white: #ffffff;
+  --g-color-main-dark: #1B1F3A;
+  --g-color-main-red: #FD3B3B;
+  --g-color-main-orange: #FE7913;
+
+  --g-color-lightgray: #F2F2F2;
+  --g-color-lightgray-text: #8787A3;
+  --g-color-darkgray: #555555;
+  --g-color-darkgray-text: #999999;
+
+  --gray-bar: #DCDCDC50;
+  --table-border-inner: #bbb;
+}
+
 html,
 body {
   padding: 0;
@@ -12,33 +28,13 @@ a {
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-}
-
-
-:root {
-  --g-color-main-red: #FD3B3B;
-
-  --g-color-main-orange: #FE7913;
-
-  --g-color-lightgray: #F2F2F2;
-  --g-color-lightgray-text: #8787A3;
-  
-  --g-color-dark-bg: #1B1F3A;
-}
-
 .serviceMainContainer{
-  background-color: white;
+  background-color: var(--g-color-main-white);
   margin: 15px;
   padding: 20px;
   border-radius: 5px;
@@ -46,15 +42,15 @@ a {
 table {
   width: 100%;
   table-layout: fixed;
-  border: 2px solid #555;
+  border: 2px solid var(--g-color-darkgray);
   border-collapse: collapse;
 }
 table > thead > tr {
-  border-bottom: 2px solid #555;
-  background: #5551;
+  border-bottom: 2px solid var(--g-color-darkgray);
+  background: var(--g-color-lightgray);
 }
 th, td {
-  border: 1.5px solid #bbb;
+  border: 1.5px solid var(--table-border-inner);
   padding: 8px;
   font-size: 14px;
 }
@@ -113,16 +109,16 @@ table .textAlignCenter {
   height: 40px;
   padding: 0 10px;
   width: 60%;
-  color: #999999;
+  color: var(--g-color-darkgray-text);
   text-align: start;
 }
 
 .filebox label {
   display: inline-block;
   padding: 10px 20px;
-  color: #fff;
+  color: var(--g-color-main-white);
   vertical-align: middle;
-  background-color: #999999;
+  background-color: var(--g-color-darkgray-text);
   cursor: pointer;
   height: 40px;
   margin-left: 10px;
@@ -154,7 +150,7 @@ button {
   
   transition: 0.5s;
 
-  color: #ffffff;
+  color: var(--g-color-main-white);
 }
 button.create{
   background: #0d6efd;
@@ -179,6 +175,18 @@ button.cancel{
 }
 button.cancel:hover{
   background: #c82333;
+}
+button.dark {
+  background: #393E46;
+}
+button.light {
+  background: #F2E7D5;
+}
+button.dark:hover {
+  color: yellow;
+}
+button.light:hover {
+  color: #EB1D36;
 }
 button:active,
 button:hover,

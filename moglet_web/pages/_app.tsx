@@ -9,7 +9,6 @@ import {
 import '../styles/globals.css'
 import React from "react"
 
-
 export default function App({ Component, pageProps} :AppProps ) {
   // Create a react query client
   const [queryClient] = React.useState(() => new QueryClient({

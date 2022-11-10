@@ -6,7 +6,7 @@
   left: 225px;
   top: 0;
   right: 0;
-  background: white;
+  background: var(--g-color-main-white);
   display: flex;
   justify-content: flex-end;
   padding: 10px 25px;

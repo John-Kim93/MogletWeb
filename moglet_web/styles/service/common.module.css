@@ -14,12 +14,12 @@
   z-index: 10;
   justify-content: center;
   align-items: center;
-  background: white;
+  background: var(--g-color-main-white);
 }
 .textInput {
   width: 100%;
   padding: 2px 4px;
-  border: 2px solid gray;
+  border: 2px solid var(--g-color-darkgray);
   border-radius: 4px;
   font-size: 14px;
   maxlength: 20;
@@ -27,7 +27,7 @@
 .textArea {
   width: 100%;
   padding: 2px 4px;
-  border: 2px solid gray;
+  border: 2px solid var(--g-color-darkgray);
   border-radius: 4px;
   font-size: 14px;
   maxlength: 255;

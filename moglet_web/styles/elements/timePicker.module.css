@@ -6,7 +6,7 @@
   display: flex;
   width: 10rem;
   height: 2.5rem;
-  border: 3px solid #D8D9CF80;
+  border: 3px solid var(--g-color-lightgray);
   border-radius: 5px;
   padding: 4px;
   font-size: 1rem;
@@ -24,5 +24,5 @@
 }
 
 .errorMessage {
-  color: red;
+  color: var(--g-color-main-red);
 }

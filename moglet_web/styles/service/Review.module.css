@@ -43,7 +43,7 @@
 .box {
   width: 200px;
   height: auto;
-  border: 0.5px solid black;
+  border: 0.5px solid var(--g-color-main-black);
   border-radius: 15px;
   box-shadow: 2px 2px 5px;
   margin: auto;
@@ -107,7 +107,7 @@
   right: -1.5rem;
   width: 4px;
   height: 100%;
-  background-color: #DCDCDC50;
+  background-color: var(--gray-bar);
 }
 
 .textWrapper {
