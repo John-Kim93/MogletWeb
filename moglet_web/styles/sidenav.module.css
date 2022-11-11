@@ -29,11 +29,15 @@
 
 .bar ul li a span {
   margin-left: 4px;
-  color: var(--g-color-main-white);
+  color: var(--sidebar-text);
+}
+
+.bar ul li a {
+  color: var(--g-color-darkgray);
 }
 
 .bar ul li a:hover {
-  color: var(--g-color-main-white);
+  color: var(--sidebar-text);
 }
 
 .logo {
@@ -43,7 +47,7 @@
   padding: 15px 10px;
 }
 .logo h2 {
-  color: var(--g-color-main-white);
+  color: var(--sidebar-text);
   font-size: 18px;
   margin-left: 12px;
 }

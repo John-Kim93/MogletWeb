@@ -10,8 +10,18 @@
   --g-color-darkgray: #555555;
   --g-color-darkgray-text: #999999;
 
+  --g-color-button: #c42d2b;
+  --g-color-button-hover: #dd3333;
+  --g-color-button-text: #EAEAEA;
+
+  --g-input-bg: #ffffff;
+  --g-input-text: #EAEAEA;
+
   --gray-bar: #DCDCDC50;
-  --table-border-inner: #bbb;
+  --table-border-inner: #bbbbbb;
+  --sidebar-text: #ffffff;
+  --header-bg: #ffffff;
+
 }
 
 html,
@@ -20,17 +30,32 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+  background: var(--g-color-main-white);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+hr {
+  margin: 5px 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, td, tr, div{
+  color: var(--g-color-main-black)
+}
+
+input, textarea {
+  background: var(--g-input-bg);
+  color: var(--g-input-text);
+  margin: 5px;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
 }
 
 .serviceMainContainer{
@@ -50,6 +75,7 @@ table > thead > tr {
   background: var(--g-color-lightgray);
 }
 th, td {
+  background: var(--g-color-main-white);
   border: 1.5px solid var(--table-border-inner);
   padding: 8px;
   font-size: 14px;
@@ -126,6 +152,7 @@ table .textAlignCenter {
 
 /* 버튼 UI */
 button {
+  background: var(--g-color-button);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -150,48 +177,27 @@ button {
   
   transition: 0.5s;
 
-  color: var(--g-color-main-white);
-}
-button.create{
-  background: #0d6efd;
-}
-button.create:hover{
-  background: #025ce2;
-}
-button.update{
-  background: #28a745;
-}
-button.update:hover{
-  background: #218838;
-}
-button.delete{
-  background: #C70039;
-}
-button.delete:hover{
-  background: #900C27;
-}
-button.cancel{
-  background: #dc3545;
-}
-button.cancel:hover{
-  background: #c82333;
+  color: var(--g-color-button-text);
 }
 button.dark {
   background: #393E46;
 }
 button.light {
-  background: #F2E7D5;
+  background: #393E46;
 }
 button.dark:hover {
+  background: #393E46;
   color: yellow;
 }
 button.light:hover {
+  background: #393E46;
   color: #EB1D36;
 }
-button:active,
-button:hover,
+button:hover {
+  background: var(--g-color-button-hover);
+}
+button:active
 button:focus {
-  background: val(--button-hover-bg-color);
   outline: 0;
 }
 button:disabled {

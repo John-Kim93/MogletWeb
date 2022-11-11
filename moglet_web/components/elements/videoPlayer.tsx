@@ -13,12 +13,6 @@ export default function VideoPlayer({ videoUrl, thumbnailUrl }) {
 
     video.controls = true
     // const defaultOptions={}
-    const defaultOptions = {
-      previewThumbnails: { 
-        enabled: true, 
-        src: thumbnailUrl,
-      }
-    }
     if (video.canPlayType('application/vnd.apple.mpegurl')) {
       // This will run in safari, where HLS is supported natively
       video.src = src
@@ -26,7 +20,11 @@ export default function VideoPlayer({ videoUrl, thumbnailUrl }) {
       // This will run in all other modern browsers
       const hls = new Hls()
       hls.loadSource(src)
-      const player = new Player(video, defaultOptions);
+      const player = new Player(video);
+      player.source = {
+        type: 'video',
+        sources: [],
+      }
       hls.attachMedia(video)
     } else {
       console.error(

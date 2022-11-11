@@ -8,6 +8,7 @@ import {
 // import { ReactQueryDevtools } from "react-query/devtools";
 import '../styles/globals.css'
 import React from "react"
+import ThemeProvider from '../repository/darkmode/ThemeProvider';
 
 export default function App({ Component, pageProps} :AppProps ) {
   // Create a react query client
@@ -19,12 +20,17 @@ export default function App({ Component, pageProps} :AppProps ) {
       },
     }
   }))
+
+
+
   return (
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
           {/* <ReactQueryDevtools initialIsOpen={true} /> */}
-          <Component {...pageProps} />
+          <ThemeProvider>
+            <Component {...pageProps} />
+          </ThemeProvider>
         </Hydrate>
       </QueryClientProvider>
     </RecoilRoot>

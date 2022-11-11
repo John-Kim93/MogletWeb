@@ -30,7 +30,7 @@ export default function ReviewDetail() {
         <div className="flexBoxStart">
           {videoUrl !== '' && <div className={style.videoBox}><VideoPlayer videoUrl={videoUrl} thumbnailUrl={thumbnailUrl}/></div>}
           <div className={style.textWrapper}>
-            <div className="flexBoxStart">
+            <div className={style.flexBoxStart}>
               <h3>작성자 : {review?.nickname}</h3>
               <div className={style.imageBox}>
                 <Image

@@ -1,33 +1,29 @@
-import { useEffect } from "react";
-import { HiSun, HiMoon } from "react-icons/hi";
-import LocalStorage from "../../store/LocalStorage";
+import { useContext, useEffect, useState } from "react"
+import { HiSun, HiMoon } from "react-icons/hi"
+import { ThemeContext } from "../../repository/darkmode/ThemeContext"
+import { themes } from "../../repository/darkmode/ThemeContext"
 
 export default function DarkModeToggleBtn() {
+  const value = useContext(ThemeContext)
+  const [storedTheme, setStoredTheme] = useState(value.theme === themes.dark ? themes.dark : themes.light)
   useEffect(() => {
-    const storedTheme = LocalStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
     if (storedTheme)
-      document.documentElement.setAttribute('data-theme', storedTheme)
-  }, [])
+      value.changeTheme(storedTheme)
+  }, [storedTheme])
 
   return(
     <>
-      {document?.documentElement?.getAttribute("data-theme") == 'light'
+      {storedTheme == themes.light
       ? <button
         type='button'
-        onClick={() => {
-          document.documentElement.setAttribute('data-theme', "dark")
-          LocalStorage.setItem('theme', "dark")}
-        }
+        onClick={() => setStoredTheme(themes.dark)}
         className="dark"
       >
         <HiMoon />
       </button>
       : <button
           type='button'
-          onClick={() => {
-            document.documentElement.setAttribute('data-theme', "light")
-            LocalStorage.setItem('theme', "light")}
-          }
+          onClick={() => setStoredTheme(themes.light)}
           className="light"
         >
           <HiSun />

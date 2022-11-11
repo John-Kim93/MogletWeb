@@ -8,11 +8,13 @@ export default function Header() {
   return (
     <div className={styles.navBar}>
       <div className={styles.nav}>
-        <div
-          className={styles.logout}
+        <p
+          className={styles.content}
           onClick={logout}
-        >로그아웃 | </div> 
-        <div>회원정보 변경</div>
+        >로그아웃</p> 
+        <p
+          className={styles.content}
+        >정보변경</p>
         <DarkModeToggleBtn />
       </div>
     </div>
