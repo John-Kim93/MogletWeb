@@ -23,7 +23,7 @@ export default function MenuItem({ menuItem }) {
         <td>{menu.content}</td>
         <td className="textAlignCenter">₩{menu.price}</td>
         <td className="textAlignCenter">{menu.isMain ? 'O' : ''}</td>
-        <td>
+        <td className="textAlignCenter">
           <button
             className="update"
             onClick={() => setEditMenu(!editMenu)}

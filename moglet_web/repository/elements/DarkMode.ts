@@ -13,8 +13,8 @@ export default class DarkMode {
         document.documentElement.style.setProperty('--g-color-darkgray', '#555555');
         document.documentElement.style.setProperty('--g-color-darkgray-text', '#999999');
         
-        document.documentElement.style.setProperty('--g-color-button', '#c42d2b');
-        document.documentElement.style.setProperty('--g-color-button-hover', '#dd3333');
+        document.documentElement.style.setProperty('--g-color-button', '#FD3B3B');
+        document.documentElement.style.setProperty('--g-color-button-hover', '#FE7913');
         document.documentElement.style.setProperty('--g-color-button-text', '#ffffff');
         
         document.documentElement.style.setProperty('--g-input-bg', '#ffffff');
