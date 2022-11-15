@@ -43,8 +43,13 @@ hr {
   margin: 5px 0;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, td, tr, div{
-  color: var(--g-color-main-black)
+h1, h2, h3, h4, h5, h6, p, a, span, td, tr, div{
+  color: var(--g-color-main-black);
+  font-weight: bold;
+}
+
+h3 {
+  margin: 15px 0;
 }
 
 input, textarea {
@@ -120,7 +125,13 @@ table .textAlignCenter {
   font-size: 14px;
 }
 
-/* 인풋 스타일 초기화 */
+.filebox {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+
 .filebox input[type="file"] {
   position: absolute;
   width: 0;
@@ -131,7 +142,8 @@ table .textAlignCenter {
 }
 
 .filebox .uploadName {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   height: 40px;
   padding: 0 10px;
   width: 60%;
@@ -147,7 +159,6 @@ table .textAlignCenter {
   background-color: var(--g-color-darkgray-text);
   cursor: pointer;
   height: 40px;
-  margin-left: 10px;
 }
 
 /* 버튼 UI */
@@ -161,7 +172,7 @@ button {
   padding: 0.5rem 1rem;
     
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: bold;
   text-align: center;
   text-decoration: none;
     

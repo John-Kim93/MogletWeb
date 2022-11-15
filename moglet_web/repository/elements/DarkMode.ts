@@ -45,7 +45,6 @@ export default class DarkMode {
         document.documentElement.style.setProperty('--g-input-bg', '#3C3C3C');
         document.documentElement.style.setProperty('--g-input-text', '#EAEAEA');
 
-
         document.documentElement.style.setProperty('--gray-bar', '#161616');
         document.documentElement.style.setProperty('--table-border-inner', '#000000');
         document.documentElement.style.setProperty('--sidebar-text', '#ffffff');

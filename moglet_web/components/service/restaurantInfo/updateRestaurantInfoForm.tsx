@@ -88,7 +88,7 @@ export default function UpdateRestaurantInfoForm({ initialValues, onSubmit, onCa
                   unoptimized
                 ></Image>
                 <div className="filebox">
-                  <p className="uploadName" >{shopImage}</p>
+                  <div className="uploadName" >{shopImage}</div>
                   <label htmlFor="file">파일찾기</label> 
                   <input type="file" id="file" onChange={(event) => {
                     setShopImage(event?.currentTarget?.files[0]?.name)
@@ -115,11 +115,13 @@ export default function UpdateRestaurantInfoForm({ initialValues, onSubmit, onCa
               </div>
               <div>
                 가격대
-                <Field name="priceAvgStart" className={styles.textInput} />
-                {errors.priceAvgStart && touched.priceAvgStart ? (<div id={styles.errorMessage}>{errors.priceAvgStart}</div>) : null}
-                ~
-                <Field name="priceAvgEnd" className={styles.textInput} />
-                {errors.priceAvgEnd && touched.priceAvgEnd ? (<div id={styles.errorMessage}>{errors.priceAvgEnd}</div>) : null}
+                <div className="flexBoxStart">
+                  <Field name="priceAvgStart" className={styles.textInput} />
+                  {errors.priceAvgStart && touched.priceAvgStart ? (<div id={styles.errorMessage}>{errors.priceAvgStart}</div>) : null}
+                  <span>~</span>
+                  <Field name="priceAvgEnd" className={styles.textInput} />
+                  {errors.priceAvgEnd && touched.priceAvgEnd ? (<div id={styles.errorMessage}>{errors.priceAvgEnd}</div>) : null}
+                </div>
               </div>
               <div>
                 홈페이지 주소

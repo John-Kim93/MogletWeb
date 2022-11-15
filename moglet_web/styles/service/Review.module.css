@@ -85,9 +85,16 @@
   overflow: hidden;
 }
 
-.imageBox {
-  height: 50px;
-  margin-left: 10px;
+.smImageBox {
+  height: 40px;
+  margin: 5px 5px 3px 10px;
+}
+.mdImageBox {
+  height: 55px;
+  margin: 5px 5px 3px 10px;
+}
+.circle {
+  border-radius: 50%;
 }
 
 .videoBox {

@@ -30,8 +30,9 @@ export default function ReviewItem({reviewRes}) {
           <h6>유저 이름</h6>
           <p>{review.nickname}</p>
         </div>
-        <div className={style.imageBox}>
+        <div className={style.smImageBox}>
           <Image
+            className={style.circle}
             src={review.profileFilename}
             width={50}
             height={50}

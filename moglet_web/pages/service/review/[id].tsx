@@ -32,8 +32,9 @@ export default function ReviewDetail() {
           <div className={style.textWrapper}>
             <div className={style.flexBoxStart}>
               <h3>작성자 : {review?.nickname}</h3>
-              <div className={style.imageBox}>
+              <div className={style.mdImageBox}>
                 <Image
+                  className={style.circle}
                   src={review?.profileFilename}
                   width={50}
                   height={50}
