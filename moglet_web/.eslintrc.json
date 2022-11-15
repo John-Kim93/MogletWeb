@@ -5,13 +5,13 @@
     "node": true
   },
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint","import"],
+  "plugins": ["@typescript-eslint", "import", "prettier"],
   "extends": [
     "airbnb",
     "airbnb/hooks",
     "prettier",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
+    // "plugin:prettier/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -25,6 +25,12 @@
     }
   },
   "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "linebreak-style": 0,
     "import/no-dynamic-require": 0,
     "import/no-unresolved": 0,
